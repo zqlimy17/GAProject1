@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>General Assembly Project 1</title>
+    <!-- Latest compiled and minified CSS, jQuery, and JS. -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <!--------------- START SCREEN ------------->
+    <section id="start-menu">
+        <h1>From F9 to A1</h1>
+        <p>You have 1 minute to get as many correct questions as you can.</p>
+        <button id="start-game">Start Game</button>
+    </section>
+
+
+    <!--------------- COUNTDOWN TIMER ------------->
+    <section id="countdown">
+        <div id="start-countdown">3</div>
+    </section>
+
+
+    <!--------------- IN GAME SCREEN ------------->
+    <section id="in-game">
+        <div id="timer"></div>
+        <div id="score-board">
+            <h2>Score</h2>
+            <div id="current-score">0</div>
+        </div>
+        <div id="mathable"></div>
+        <input type="number" name="user-input" id="user-input">
+        <button id="submit">Go!</button>
+    </section>
+
+
+    <!--------------- ENDGAME SCREEN ------------->
+    <section id="end-game">
+        <div id="end-game-score"></div>
+        <button id="restart-game">Try Again!</button>
+        <button id="back-to-main-menu">Main Menu</button>
+    </section>
+
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
