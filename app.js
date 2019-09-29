@@ -11,115 +11,192 @@ const userInput = $('#user-input');
 const timer = $('#timer');
 const time = 5;
 const endGameScore = $('#end-game-score');
-
-// BUTTON SELECTORS
-const restartGame = $('#restart-game');
-const mainMenu = $('#back-to-main-menu')
-
-
+const pausedScreen = $('#paused-screen');
 
 let startCountdown = $('#start-countdown');
 let currentScore = $('#current-score');
 let gameSpace = $('#mathable');
 let scoreCounter = 0;
+
+
+// BUTTON SELECTORS
+const restartGameButton = $('#restart-game');
+const mainMenuButton = $('#back-to-main-menu');
+const additionButton = $('#addition');
+const subtractionButton = $('#subtraction');
+const multiplicationButton = $('#multiplication');
+const divisionButton = $('#division');
+const randomButton = $('#random');
+const pauseButton = $('#pause-button');
+const resumeButton = $('#resume-button');
+
+// OTHER VARIABLES
+let difficulty = "";
 let c = 0
+let isPaused = false;
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
 
 let game = () => {
-    console.log('game started')
+    console.log('game started');
+    // IF STATEMENT FOR GAME DIFFICULTY
+    if (difficulty === "addition") {
+        addition();
+    } else if (difficulty === "subtraction") {
+        subtraction();
+    } else if (difficulty === "multiplication") {
+        multiplication();
+    } else if (difficulty === "division") {
+        division();
+    } else {
+        random();
+    }
+}
+
+let addition = () => {
     var a = Math.ceil(Math.random() * 20);
     var b = Math.ceil(Math.random() * 20);
     c = a + b;
-    gameSpace.text(a + '+' + b)
-    console.log(c)
+    gameSpace.text(a + '+' + b);
+    console.log(c);
 }
+
+let subtraction = () => {
+    var a = Math.ceil(Math.random() * 20);
+    var b = Math.ceil(Math.random() * 20);
+    c = a - b;
+    gameSpace.text(a + '-' + b);
+    console.log(c);
+}
+
+let multiplication = () => {
+    var a = Math.ceil(Math.random() * 10);
+    var b = Math.ceil(Math.random() * 10);
+    c = a * b;
+    gameSpace.text(a + '*' + b);
+    console.log(c);
+}
+
+let division = () => {
+    var b = Math.ceil(Math.random() * 10);
+    var a = b * Math.ceil(Math.random() * 10);
+    c = a / b;
+    gameSpace.text(a + '/' + b);
+    console.log(c);
+}
+
+let random = () => {
+    let r = "";
+    r = Math.floor(Math.random() * 4);
+    if (r === 0) {
+        addition();
+    } else if (r === 1) {
+        subtraction();
+    } else if (r === 2) {
+        multiplication();
+    } else {
+        division();
+    }
+}
+
 
 let enter = (event)=>{
     if(event.keyCode === 13) {
-        console.log(event.target.value)
+        console.log(`Answer is ${event.target.value}`);
         let answer = event.target.value
         if (answer == c) {
-            console.log('Correct')
-            correct()
-            game()
+            console.log('Correct');
+            correct();
+            game();
         } else {
-            console.log("Wrong")
-            wrong()
+            console.log("Wrong");
+            wrong();
         }
     }
 }
 
 userInput.on('keydown', enter);
 
-
 const correct = () => {
     scoreCounter++
     currentScore.text(scoreCounter);
-    userInput.val("")
+    userInput.val("");
 }
 
 const wrong = () => {
-    scoreCounter--
+    scoreCounter--;
     currentScore.text(scoreCounter);
-    userInput.val("")
+    userInput.val("");
 }
 
 const gameStart = () => {
-    countdown.hide()
-    inGame.show()
-    game()
+    countdown.hide();
+    inGame.show();
+    game();
     startTimer();
     endTimer();
 }
 
-
 let startTimer = () => {
     let timeLeft = time;
     timer.text(timeLeft);
-    console.log('timer started')
-    let x = setInterval(function(){
-        timeLeft--
-        timer.text(timeLeft)
-        if (timeLeft === 0) {
-            clearInterval(x)
+    console.log('timer started');
+    let x = setInterval(function() {
+        if (!isPaused) {
+            timeLeft--;
+            timer.text(timeLeft);
+            if (timeLeft === 0) {
+                clearInterval(x);
+            }
         }
     },1000);
 }
 
 let endTimer = () => {
-    setTimeout(function(){
-    gameEnd()
-    }, 5000)
+    let t = 1;
+    let y = setInterval(function() {
+        if (!isPaused) {
+            t--
+            gameEnd();
+        }
+        if (t === 0) {
+            clearInterval(y);
+        }
+    },5000);
+    // setTimeout(function() {
+    // gameEnd();
+    // }, 5000);
 }
 
 const startGameButtonClicked = () => {
-    console.log('clicked on start/restart game button')
-    let counter = 3
+    console.log('clicked on start/restart game button');
+    scoreCounter = 0;
+    currentScore.text(scoreCounter);
+    let counter = 3;
     startMenu.hide();
     countdown.show();
     startCountdown.text(counter);
 
     let count = setInterval(function(){
-        counter--
+        counter--;
         startCountdown.text(counter);
         if(counter === 0) {
-            startCountdown.text('Go!')
-            clearInterval(count)
+            startCountdown.text('Go!');
+            clearInterval(count);
         }
     },1000);
 
     setTimeout(function(){
-    gameStart();
-  }, 4000);
+        gameStart();
+    }, 4000);
 }
 
 const gameEnd = () => {
-    console.log('game has ended')
+    console.log('game has ended');
     inGame.hide();
     endGame.show();
-    endGameScore.append(scoreCounter)
+    endGameScore.append(scoreCounter);
 }
 
 
@@ -127,28 +204,65 @@ const gameEnd = () => {
 // BUTTONS
 
 startGame.on('click', () => {
-    startGameButtonClicked()
+    startGameButtonClicked();
 })
 
-restartGame.on('click', () => {
-    startGameButtonClicked()
+restartGameButton.on('click', () => {
+    startGameButtonClicked();
     endGame.hide();
-    endGameScore.text("")
+    endGameScore.text("");
 })
 
 
-mainMenu.on('click',() => {
+mainMenuButton.on('click',() => {
     countdown.hide();
     inGame.hide();
     endGame.hide();
     startMenu.show();
 })
 
+additionButton.on('click', () => {
+    difficulty = "addition";
+    console.log(difficulty);
 
+})
+
+subtractionButton.on('click', () => {
+    difficulty = "subtraction";
+    console.log(difficulty);
+})
+
+multiplicationButton.on('click', () => {
+    difficulty = "multiplication";
+    console.log(difficulty);
+})
+
+divisionButton.on('click', () => {
+    difficulty = "division";
+    console.log(difficulty);
+})
+
+randomButton.on('click', () => {
+    difficulty = "random";
+    console.log(difficulty);
+})
+
+pauseButton.on('click', () => {
+    console.log('paused game');
+    isPaused = true;
+    pausedScreen.show();
+    inGame.hide();
+})
+
+resumeButton.on('click', () => {
+    console.log('resumed game')
+    isPaused = false;
+    pausedScreen.hide();
+    inGame.show();
+})
 
 // SHOW/HIDE SECTIONS
-
 countdown.hide();
 inGame.hide();
 endGame.hide();
-// game()
+pausedScreen.hide();

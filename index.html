@@ -9,8 +9,18 @@
     <!--------------- START SCREEN ------------->
     <section id="start-menu">
         <h1>From F9 to A1</h1>
-        <p>You have 1 minute to get as many correct questions as you can.</p>
+        <div id="difficulty">
+            <h3>Select Difficulty:</h3>
+            <button id="addition">Addition</button>
+            <button id="subtraction">Subtraction</button>
+            <button id="multiplication">Multiplication</button>
+            <button id="division">Division</button>
+            <button id="random">Random</button>
+        </div>
         <button id="start-game">Start Game</button>
+        <h4>Instructions:</h4>
+        <p>You have 30 seconds to get as many correct questions as you can.</p>
+        <p>Hit Enter to submit.</p>
     </section>
 
 
@@ -29,9 +39,14 @@
         </div>
         <div id="mathable"></div>
         <input type="number" name="user-input" id="user-input">
-        <button id="submit">Go!</button>
+        <!-- <button id="submit">Go!</button> -->
+        <button id="pause-button">Pause Game</button>
     </section>
 
+    <!--------------- IN GAME SCREEN ------------->
+    <section id="paused-screen">
+        <button id="resume-button">Resume Game</button>
+    </section>
 
     <!--------------- ENDGAME SCREEN ------------->
     <section id="end-game">
@@ -39,7 +54,6 @@
         <button id="restart-game">Try Again!</button>
         <button id="back-to-main-menu">Main Menu</button>
     </section>
-
 
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
