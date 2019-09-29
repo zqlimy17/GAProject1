@@ -214,6 +214,7 @@ mainMenuButton.on('click',() => {
     inGame.hide();
     endGame.hide();
     startMenu.show();
+    endGameScore.text("");
 })
 
 additionButton.on('click', () => {
