@@ -144,7 +144,6 @@ const gameStart = () => {
     inGame.show();
     game();
     startTimer();
-    // endTimer();
 }
 
 let startTimer = () => {
@@ -162,22 +161,6 @@ let startTimer = () => {
         }
     },1000);
 }
-
-// let endTimer = () => {
-//     let t = 1;
-//     let y = setInterval(function() {
-//         if (!isPaused) {
-//             t--
-//             gameEnd();
-//         }
-//         if (t === 0) {
-//             clearInterval(y);
-//         }
-//     },5000);
-//     // setTimeout(function() {
-//     // gameEnd();
-//     // }, 5000);
-// }
 
 const startGameButtonClicked = () => {
     console.log('clicked on start/restart game button');
@@ -226,6 +209,7 @@ restartGameButton.on('click', () => {
 
 
 mainMenuButton.on('click',() => {
+    console.log('clicked main menu button')
     countdown.hide();
     inGame.hide();
     endGame.hide();

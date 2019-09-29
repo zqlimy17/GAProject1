@@ -1,65 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>General Assembly Project 1</title>
-    <!-- Latest compiled and minified CSS, jQuery, and JS. -->
+    <title>From F9 to A1</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <!--------------- START SCREEN ------------->
-    <section id="start-menu">
-        <h1>From F9 to A1</h1>
-        <div id="difficulty">
-            <h3>Select Difficulty:</h3>
-            <button id="addition">Addition</button>
-            <button id="subtraction">Subtraction</button>
-            <button id="multiplication">Multiplication</button>
-            <button id="division">Division</button>
-            <button id="random">Random</button>
-        </div>
-        <button id="start-game">Start Game</button>
-        <h4>Instructions:</h4>
-        <p>You have 30 seconds to get as many correct questions as you can.</p>
-        <p>Hit Enter to submit.</p>
-    </section>
+    <div class="container text-center">
+        <!--------------- START SCREEN ------------->
+        <section id="start-menu">
+            <h1>From F9 to A1</h1>
+            <div id="difficulty">
+                <h3>Select Difficulty:</h3>
+                <div class="d-flex row">
+                    <button id="addition" class="btn btn-secondary flex-fill">Addition</button>
+                    <button id="subtraction" class="btn btn-primary flex-fill">Subtraction</button>
+                    <button id="multiplication" class="btn btn-warning flex-fill">Multiplication</button>
+                    <button id="division" class="btn btn-danger flex-fill">Division</button>
+                    <button id="random" class="btn btn-dark flex-fill">Random</button>
+                </div>
+            </div>
+            <div class="row">
+                <button id="start-game" class="btn btn-success btn-lg btn-block">Start Game</button>
+            </div>
+            <h4>Instructions:</h4>
+            <p class="lead">You have 30 seconds to get as many correct questions as you can.</p>
+            <p class="lead">Hit Enter to submit.</p>
+        </section>
 
 
-    <!--------------- COUNTDOWN TIMER ------------->
-    <section id="countdown">
-        <div id="start-countdown">3</div>
-    </section>
+        <!--------------- COUNTDOWN TIMER ------------->
+        <section id="countdown">
+            <div id="start-countdown">3</div>
+        </section>
 
 
-    <!--------------- IN GAME SCREEN ------------->
-    <section id="in-game">
-        <div id="timer"></div>
-        <div id="score-board">
-            <h2>Score</h2>
-            <div id="current-score">0</div>
-        </div>
-        <div id="mathable"></div>
-        <input type="number" name="user-input" id="user-input">
-        <!-- <button id="submit">Go!</button> -->
-        <button id="pause-button">Pause Game</button>
-    </section>
+        <!--------------- IN GAME SCREEN ------------->
+        <section id="in-game">
+            <div id="timer"></div>
+            <div id="score-board">
+                <h2>Score</h2>
+                <div id="current-score">0</div>
+            </div>
+            <div id="mathable"></div>
+            <input type="number" name="user-input" id="user-input">
+            <!-- <button id="submit">Go!</button> -->
+            <button id="pause-button">Pause Game</button>
+        </section>
 
-    <!--------------- IN GAME SCREEN ------------->
-    <section id="paused-screen">
-        <button id="resume-button">Resume Game</button>
-    </section>
+        <!--------------- IN GAME SCREEN ------------->
+        <section id="paused-screen">
+            <button id="resume-button">Resume Game</button>
+        </section>
 
-    <!--------------- ENDGAME SCREEN ------------->
-    <section id="end-game">
-        <div id="end-game-score"></div>
-        <button id="restart-game">Try Again!</button>
-        <button id="back-to-main-menu">Main Menu</button>
-    </section>
+        <!--------------- ENDGAME SCREEN ------------->
+        <section id="end-game">
+            <div id="end-game-score"></div>
+            <button id="restart-game">Try Again!</button>
+            <button id="back-to-main-menu">Main Menu</button>
+        </section>
 
-    <script
+        <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous">
-    </script>
-    <script type="text/javascript" src="app.js"></script>
-    </body>
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </div>
+</body>
 </html>
