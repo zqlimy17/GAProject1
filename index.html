@@ -4,6 +4,7 @@
     <title>From F9 to A1</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 </head>
 <body>
     <div class="container text-center">
@@ -12,20 +13,31 @@
             <h1>From F9 to A1</h1>
             <div id="difficulty">
                 <h3>Select Difficulty:</h3>
-                <div class="d-flex row">
-                    <button id="addition" class="btn btn-secondary flex-fill">Addition</button>
+                <div class="d-flex row justify-content-around">
+                    <div id="addition" class="difficulty-button">Addition</div>
+                    <div id="subtraction" class="difficulty-button">Subtraction</div>
+                    <div id="multiplication" class="difficulty-button">Multiplication</div>
+                    <div id="division" class="difficulty-button">Division</div>
+                    <div id="random" class="difficulty-button">Random</div>
+
+                    <!-- <button id="addition" class="btn btn-secondary flex-fill">Addition</button>
                     <button id="subtraction" class="btn btn-primary flex-fill">Subtraction</button>
                     <button id="multiplication" class="btn btn-warning flex-fill">Multiplication</button>
                     <button id="division" class="btn btn-danger flex-fill">Division</button>
-                    <button id="random" class="btn btn-dark flex-fill">Random</button>
+                    <button id="random" class="btn btn-dark flex-fill">Random</button> -->
                 </div>
             </div>
             <div class="row">
                 <button id="start-game" class="btn btn-success btn-lg btn-block">Start Game</button>
             </div>
-            <h4>Instructions:</h4>
-            <p class="lead">You have 30 seconds to get as many correct questions as you can.</p>
-            <p class="lead">Hit Enter to submit.</p>
+            <div class="instructions">
+                <h4>Instructions:</h4>
+                <p class="lead">You have <span id="master-time"></span> seconds to get as many correct questions as you can.</p>
+                <p class="lead">Hit Enter to submit.</p>
+            </div>
+            <div>
+                <button>Options</button>
+            </div>
         </section>
 
 
@@ -48,9 +60,10 @@
             <button id="pause-button">Pause Game</button>
         </section>
 
-        <!--------------- IN GAME SCREEN ------------->
+        <!--------------- PAUSED SCREEN ------------->
         <section id="paused-screen">
             <button id="resume-button">Resume Game</button>
+            <button>Main Game [NOT WORKING]</button>
         </section>
 
         <!--------------- ENDGAME SCREEN ------------->
@@ -59,6 +72,18 @@
             <button id="restart-game">Try Again!</button>
             <button id="back-to-main-menu">Main Menu</button>
         </section>
+
+        <!--------------- OPTIONS ------------->
+        <section id="options-menu">
+            <input type="number" id="user-time-input">
+        </section>
+
+        <footer class="container-fluid fixed-bottom">
+            <div class="row">
+                <p class="col-sm-6 text-left">Created by ZQLIMY.</p>
+                <p class="col-sm-6 text-right">Powered by General Assembly.</p>
+            </div>
+        </footer>
 
         <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"

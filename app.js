@@ -1,4 +1,9 @@
 /////////////////////////////////////////////////////////////////////
+// MASTER OPTIONS
+
+const time = 30;
+
+/////////////////////////////////////////////////////////////////////
 // SELECTORS
 
 const startMenu = $('#start-menu');
@@ -9,9 +14,12 @@ const scoreBoard = $('#score-board');
 const startGame = $('#start-game');
 const userInput = $('#user-input');
 const timer = $('#timer');
-const time = 5;
 const endGameScore = $('#end-game-score');
 const pausedScreen = $('#paused-screen');
+const masterTime = $('#master-time')
+const optionsMenu = $('#options-menu')
+const difficultyButton = $('.difficulty-button');
+
 
 let startCountdown = $('#start-countdown');
 let currentScore = $('#current-score');
@@ -31,14 +39,13 @@ const resumeButton = $('#resume-button');
 
 // OTHER VARIABLES
 let difficulty = "";
-let c = 0
+let c = 0;
 let isPaused = false;
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
 
 let game = () => {
-    console.log('game started');
     userInput.focus();
     // IF STATEMENT FOR GAME DIFFICULTY
     if (difficulty === "addition") {
@@ -55,35 +62,35 @@ let game = () => {
 }
 
 let addition = () => {
-    var a = Math.ceil(Math.random() * 20);
-    var b = Math.ceil(Math.random() * 20);
+    var a = Math.ceil(Math.random() * 45) + 5;
+    var b = Math.ceil(Math.random() * 47) + 3;
     c = a + b;
     gameSpace.text(a + '+' + b);
-    console.log(c);
+    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
 }
 
 let subtraction = () => {
-    var a = Math.ceil(Math.random() * 20);
-    var b = Math.ceil(Math.random() * 20);
+    var a = Math.ceil(Math.random() * 45) + 5;
+    var b = Math.ceil(Math.random() * 47) + 3;
     c = a - b;
     gameSpace.text(a + '-' + b);
-    console.log(c);
+    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
 }
 
 let multiplication = () => {
-    var a = Math.ceil(Math.random() * 10);
-    var b = Math.ceil(Math.random() * 10);
+    var a = Math.ceil(Math.random() * 10) + 3;
+    var b = Math.ceil(Math.random() * 10) + 3;
     c = a * b;
     gameSpace.text(a + '*' + b);
-    console.log(c);
+    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
 }
 
 let division = () => {
-    var b = Math.ceil(Math.random() * 10);
+    var b = Math.ceil(Math.random() * 10) + 3;
     var a = b * Math.ceil(Math.random() * 10);
     c = a / b;
     gameSpace.text(a + '/' + b);
-    console.log(c);
+    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
 }
 
 let random = () => {
@@ -100,16 +107,15 @@ let random = () => {
     }
 }
 
-let enter = (event)=>{
-    if(event.keyCode === 13) {
-        console.log(`Answer is ${event.target.value}`);
+let enter = (event) => {
+    if (event.keyCode === 13) {
         let answer = event.target.value
         if (answer == c) {
             console.log('Correct');
             correct();
             game();
         } else {
-            console.log("Wrong");
+            console.log("%cWrong" ,"font-size:20px;color:red;");
             wrong();
         }
     }
@@ -144,6 +150,7 @@ const gameStart = () => {
     inGame.show();
     game();
     startTimer();
+    console.log('Game Started');
 }
 
 let startTimer = () => {
@@ -194,6 +201,9 @@ const gameEnd = () => {
 
 
 /////////////////////////////////////////////////////////////////////
+// BUTTON FUNCTIONS
+
+/////////////////////////////////////////////////////////////////////
 // BUTTONS
 
 startGame.attr('disabled', true);
@@ -208,44 +218,24 @@ restartGameButton.on('click', () => {
 })
 
 
+difficultyButton.on('click', (event) => {
+    let x = event.target.id;
+    difficultyButton.removeClass('active');
+    $(`#${x}`).addClass('active');
+    difficulty = x;
+    startGame.attr('disabled', false);
+    console.log(difficulty);
+});
+
+
 mainMenuButton.on('click',() => {
-    console.log('clicked main menu button')
+    console.log('clicked main menu button');
+    pausedScreen.hide();
     countdown.hide();
     inGame.hide();
     endGame.hide();
     startMenu.show();
     endGameScore.text("");
-})
-
-additionButton.on('click', () => {
-    difficulty = "addition";
-    startGame.attr('disabled', false);
-    console.log(difficulty);
-
-})
-
-subtractionButton.on('click', () => {
-    difficulty = "subtraction";
-    startGame.attr('disabled', false);
-    console.log(difficulty);
-})
-
-multiplicationButton.on('click', () => {
-    difficulty = "multiplication";
-    startGame.attr('disabled', false);
-    console.log(difficulty);
-})
-
-divisionButton.on('click', () => {
-    difficulty = "division";
-    startGame.attr('disabled', false);
-    console.log(difficulty);
-})
-
-randomButton.on('click', () => {
-    difficulty = "random";
-    startGame.attr('disabled', false);
-    console.log(difficulty);
 })
 
 pauseButton.on('click', () => {
@@ -267,3 +257,6 @@ countdown.hide();
 inGame.hide();
 endGame.hide();
 pausedScreen.hide();
+optionsMenu.hide();
+
+masterTime.text(time);

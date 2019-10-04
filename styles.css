@@ -1,0 +1,36 @@
+/*body {
+    background: black;
+    color:white;
+}*/
+
+h1 {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 5em;
+}
+
+#score-board {
+    background-color: white;
+    color: black;
+}
+
+.difficulty-button {
+    border-radius: 20px;
+    border: 1px solid black;
+    width:19%;
+}
+
+.difficulty-button:active {
+    background-color: lightcoral;
+}
+
+.difficulty-button:hover {
+    border: 1px solid lightblue;
+    cursor: pointer;
+}
+
+.active {
+    background-color: coral;
+}
+
+footer {
+}
