@@ -209,11 +209,11 @@ const correct = () => {
             if (gameSpace.text().includes('+')) {
                 scoreCounter = scoreCounter + 2;
             } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 3;
-            } else if (gameSpace.text().includes('x')) {
                 scoreCounter = scoreCounter + 4;
+            } else if (gameSpace.text().includes('x')) {
+                scoreCounter = scoreCounter + 6;
             } else {
-                scoreCounter = scoreCounter + 5;
+                scoreCounter = scoreCounter + 8;
             }
         }
         currentScore.text(scoreCounter);
@@ -231,11 +231,11 @@ const correct = () => {
             if (gameSpace.text().includes('+')) {
                 scoreCounter = scoreCounter + 20;
             } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 30 ;
+                scoreCounter = scoreCounter + 40 ;
             } else if (gameSpace.text().includes('x')) {
-                scoreCounter = scoreCounter + 40;
+                scoreCounter = scoreCounter + 60;
             } else {
-                scoreCounter = scoreCounter + 50;
+                scoreCounter = scoreCounter + 80;
             }
         }
         currentScore.text(scoreCounter);
@@ -253,11 +253,11 @@ const correct = () => {
             if (gameSpace.text().includes('+')) {
                 scoreCounter = scoreCounter + 200;
             } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 300;
-            } else if (gameSpace.text().includes('x')) {
                 scoreCounter = scoreCounter + 400;
+            } else if (gameSpace.text().includes('x')) {
+                scoreCounter = scoreCounter + 600;
             } else {
-                scoreCounter = scoreCounter + 500;
+                scoreCounter = scoreCounter + 800;
             }
         }
         currentScore.text(scoreCounter);
@@ -312,7 +312,6 @@ const startGameButtonClicked = () => {
             clearInterval(count);
         }
     },1000);
-
     setTimeout(function(){
         gameStart();
     }, 4000);
