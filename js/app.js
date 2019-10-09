@@ -1,7 +1,8 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 1;
+let time = 30;
+let difficultyMode = 'hard';
 
 /////////////////////////////////////////////////////////////////////
 // SELECTORS
@@ -20,7 +21,6 @@ const masterTime = $('#master-time')
 const optionsMenu = $('#options-menu')
 const difficultyButton = $('.difficulty-button');
 
-
 let startCountdown = $('#start-countdown');
 let currentScore = $('#current-score');
 let gameSpace = $('#mathable');
@@ -38,14 +38,12 @@ const pauseButton = $('#pause-button');
 const resumeButton = $('#resume-button');
 const optionsButton = $('#options-button');
 const timeButton = $('.time-button')
+const difficultyOptions = $('.difficulty-options')
 const saveChanges = $('#save-changes')
-// const t30s = $('#30s');
-// const t60s = $('#60s');
-
 
 // OTHER VARIABLES
 let difficulty = "";
-let c = 0;
+let ans = 0;
 let isPaused = false;
 
 /////////////////////////////////////////////////////////////////////
@@ -68,35 +66,103 @@ let game = () => {
 };
 
 let addition = () => {
-    var a = Math.ceil(Math.random() * 45) + 5;
-    var b = Math.ceil(Math.random() * 47) + 3;
-    c = a + b;
-    gameSpace.text(a + '+' + b);
-    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+    if (difficultyMode === 'easy') {
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        ans = a + b;
+        gameSpace.text(a + '+' + b);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else if (difficultyMode === 'medium') {
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        ans = a + b + c;
+        gameSpace.text(`${a} + ${b} + ${c}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else {
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        var d = Math.ceil(Math.random() * 47) + 3;
+        ans = a + b + c + d;
+        gameSpace.text(`${a} + ${b} + ${c} + ${d}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    }
 };
 
 let subtraction = () => {
-    var a = Math.ceil(Math.random() * 45) + 5;
-    var b = Math.ceil(Math.random() * 47) + 3;
-    c = a - b;
-    gameSpace.text(a + '-' + b);
-    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+    if (difficultyMode === 'easy') {
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        ans = a - b;
+        gameSpace.text(a + '-' + b);
+        console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+    } else if (difficultyMode === 'medium') {
+        var a = Math.ceil(Math.random() * 50) + 50;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        ans = a - b - c;
+        gameSpace.text(`${a} - ${b} - ${c}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else {
+        var a = Math.ceil(Math.random() * 50) + 100;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        var d = Math.ceil(Math.random() * 47) + 3;
+        ans = a - b - c - d;
+        gameSpace.text(`${a} - ${b} - ${c} - ${d}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    }
 };
 
 let multiplication = () => {
-    var a = Math.ceil(Math.random() * 9) + 3;
-    var b = Math.ceil(Math.random() * 9) + 3;
-    c = a * b;
-    gameSpace.text(a + 'x' + b);
-    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+    if (difficultyMode === 'easy') {
+        var a = Math.ceil(Math.random() * 9) + 3;
+        var b = Math.ceil(Math.random() * 9) + 3;
+        ans = a * b;
+        gameSpace.text(a + 'x' + b);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else if (difficultyMode === 'medium') {
+        var a = Math.ceil(Math.random() * 8)+1;
+        var b = Math.ceil(Math.random() * 4)+1;
+        ans = a * a * b;
+        gameSpace.text(`${a}² x ${b}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else {
+        var a = Math.ceil(Math.random() * 4)+2;
+        // var b = (Math.ceil(Math.random() * 4)+2) * (Math.ceil(Math.random() * 4)+2);
+        var y = (Math.ceil(Math.random() * 4)+2);
+        var b = y * y
+        var c = Math.ceil(Math.random() * 4)+2;
+        ans = a * a * Math.sqrt(b) * c;
+        gameSpace.text(`${a}² x √${b} x ${c}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    }
 };
 
 let division = () => {
-    var b = Math.ceil(Math.random() * 10) + 3;
-    var a = b * Math.ceil(Math.random() * 10);
-    c = a / b;
-    gameSpace.text(a + '÷' + b);
-    console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+    if (difficultyMode === 'easy') {
+        var b = Math.ceil(Math.random() * 10) + 3;
+        var a = b * Math.ceil(Math.random() * 10);
+        ans = a / b;
+        gameSpace.text(a + '÷' + b);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else if (difficultyMode === 'medium') {
+        var b = Math.ceil(Math.random() * 2) + 3;
+        var y = b * (Math.ceil(Math.random() * 7));
+        var a = y * y;
+        ans = y / b
+        gameSpace.text(`√${a} ÷ ${b}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    } else {
+        var z = Math.ceil(Math.random() * 2) + 2;
+        var b = z * z;
+        var y = b * (Math.ceil(Math.random() * 3));
+        var a = y * y;
+        ans = y/z;
+        gameSpace.text(`√${a} ÷ √${b}`);
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+    }
 };
 
 let random = () => {
@@ -116,7 +182,7 @@ let random = () => {
 let enter = (event) => {
     if (event.keyCode === 13) {
         let answer = event.target.value
-        if (answer == c) {
+        if (answer == ans) {
             console.log('Correct');
             correct();
             game();
@@ -130,19 +196,49 @@ let enter = (event) => {
 userInput.on('keydown', enter);
 
 const correct = () => {
-    if (difficulty === "addition") {
-        scoreCounter++;
-    } else if (difficulty === "subtraction") {
-        scoreCounter = scoreCounter + 2 ;
-    } else if (difficulty === "multiplication") {
-        scoreCounter = scoreCounter + 3;
-    } else if (difficulty === "division") {
-        scoreCounter = scoreCounter + 4;
+    if (difficultyMode === "easy") {
+        if (difficulty === "addition") {
+            scoreCounter++;
+        } else if (difficulty === "subtraction") {
+            scoreCounter = scoreCounter + 2 ;
+        } else if (difficulty === "multiplication") {
+            scoreCounter = scoreCounter + 3;
+        } else if (difficulty === "division") {
+            scoreCounter = scoreCounter + 4;
+        } else {
+            scoreCounter = scoreCounter + 5;
+        }
+        currentScore.text(scoreCounter);
+        userInput.val("");
+    } else if (difficultyMode === "medium") {
+        if (difficulty === "addition") {
+            scoreCounter = scoreCounter + 10;
+        } else if (difficulty === "subtraction") {
+            scoreCounter = scoreCounter + 20 ;
+        } else if (difficulty === "multiplication") {
+            scoreCounter = scoreCounter + 30;
+        } else if (difficulty === "division") {
+            scoreCounter = scoreCounter + 40;
+        } else {
+            scoreCounter = scoreCounter + 50;
+        }
+        currentScore.text(scoreCounter);
+        userInput.val("");
     } else {
-        scoreCounter = scoreCounter + 5;
+        if (difficulty === "addition") {
+            scoreCounter = scoreCounter + 100;
+        } else if (difficulty === "subtraction") {
+            scoreCounter = scoreCounter + 200 ;
+        } else if (difficulty === "multiplication") {
+            scoreCounter = scoreCounter + 300;
+        } else if (difficulty === "division") {
+            scoreCounter = scoreCounter + 400;
+        } else {
+            scoreCounter = scoreCounter + 500;
+        }
+        currentScore.text(scoreCounter);
+        userInput.val("");
     }
-    currentScore.text(scoreCounter);
-    userInput.val("");
 };
 
 const wrong = () => {
@@ -228,37 +324,6 @@ difficultyButton.on('click', (event) => {
     console.log(difficulty);
 });
 
-// additionButton.on('click', () => {
-//     difficulty = "addition";
-//     startGame.attr('disabled', false);
-//     console.log(difficulty);
-
-// })
-
-// subtractionButton.on('click', () => {
-//     difficulty = "subtraction";
-//     startGame.attr('disabled', false);
-//     console.log(difficulty);
-// })
-
-// multiplicationButton.on('click', () => {
-//     difficulty = "multiplication";
-//     startGame.attr('disabled', false);
-//     console.log(difficulty);
-// })
-
-// divisionButton.on('click', () => {
-//     difficulty = "division";
-//     startGame.attr('disabled', false);
-//     console.log(difficulty);
-// })
-
-// randomButton.on('click', () => {
-//     difficulty = "random";
-//     startGame.attr('disabled', false);
-//     console.log(difficulty);
-// })
-
 optionsButton.on('click', () => {
     startMenu.hide();
     optionsMenu.show();
@@ -269,8 +334,12 @@ timeButton.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     time = $(event.currentTarget).attr('value');
     masterTime.text(time);
+});
 
-})
+difficultyOptions.on('click', (event) => {
+    difficultyOptions.removeClass('active');
+    $(event.currentTarget).addClass('active');
+});
 
 saveChanges.on('click', () => {
     startMenu.show();
