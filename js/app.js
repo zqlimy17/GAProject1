@@ -2,7 +2,7 @@
 // MASTER OPTIONS
 
 let time = 30;
-let difficultyMode = 'hard';
+let difficultyMode = 'easy';
 
 /////////////////////////////////////////////////////////////////////
 // SELECTORS
@@ -96,7 +96,7 @@ let subtraction = () => {
         var b = Math.ceil(Math.random() * 47) + 3;
         ans = a - b;
         gameSpace.text(a + '-' + b);
-        console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
+        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
         var a = Math.ceil(Math.random() * 50) + 50;
         var b = Math.ceil(Math.random() * 47) + 3;
@@ -206,7 +206,15 @@ const correct = () => {
         } else if (difficulty === "division") {
             scoreCounter = scoreCounter + 4;
         } else {
-            scoreCounter = scoreCounter + 5;
+            if (gameSpace.text().includes('+')) {
+                scoreCounter = scoreCounter + 2;
+            } else if (gameSpace.text().includes('-')) {
+                scoreCounter = scoreCounter + 3;
+            } else if (gameSpace.text().includes('x')) {
+                scoreCounter = scoreCounter + 4;
+            } else {
+                scoreCounter = scoreCounter + 5;
+            }
         }
         currentScore.text(scoreCounter);
         userInput.val("");
@@ -220,7 +228,15 @@ const correct = () => {
         } else if (difficulty === "division") {
             scoreCounter = scoreCounter + 40;
         } else {
-            scoreCounter = scoreCounter + 50;
+            if (gameSpace.text().includes('+')) {
+                scoreCounter = scoreCounter + 20;
+            } else if (gameSpace.text().includes('-')) {
+                scoreCounter = scoreCounter + 30 ;
+            } else if (gameSpace.text().includes('x')) {
+                scoreCounter = scoreCounter + 40;
+            } else {
+                scoreCounter = scoreCounter + 50;
+            }
         }
         currentScore.text(scoreCounter);
         userInput.val("");
@@ -234,7 +250,15 @@ const correct = () => {
         } else if (difficulty === "division") {
             scoreCounter = scoreCounter + 400;
         } else {
-            scoreCounter = scoreCounter + 500;
+            if (gameSpace.text().includes('+')) {
+                scoreCounter = scoreCounter + 200;
+            } else if (gameSpace.text().includes('-')) {
+                scoreCounter = scoreCounter + 300;
+            } else if (gameSpace.text().includes('x')) {
+                scoreCounter = scoreCounter + 400;
+            } else {
+                scoreCounter = scoreCounter + 500;
+            }
         }
         currentScore.text(scoreCounter);
         userInput.val("");
