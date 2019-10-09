@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 3000;
+let time = 60;
 let difficultyMode = 'easy';
 
 /////////////////////////////////////////////////////////////////////
@@ -141,8 +141,8 @@ let multiplication = () => {
 
 let division = () => {
     if (difficultyMode === 'easy') {
-        var b = Math.ceil(Math.random() * 10) + 3;
-        var a = b * Math.ceil(Math.random() * 10);
+        var b = Math.ceil(Math.random() * 9) + 3;
+        var a = b * (Math.ceil(Math.random() * 9) +3);
         ans = a / b;
         gameSpace.text(a + '÷' + b);
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
@@ -182,10 +182,18 @@ let enter = (event) => {
     if (event.keyCode === 13) {
         let answer = event.target.value
         if (answer == ans) {
+            userInput.addClass('flash')
+            setTimeout(function() {
+            userInput.removeClass('flash')
+            }, 400);
             console.log('Correct');
             correct();
             game();
         } else {
+            userInput.addClass('shake')
+            setTimeout(function() {
+            userInput.removeClass('shake')
+            }, 400);
             console.log("%cWrong" ,"font-size:20px;color:red;");
             wrong();
         };

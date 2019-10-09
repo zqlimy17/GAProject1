@@ -69,15 +69,18 @@
 
         <!--------------- IN GAME SCREEN ------------->
         <section id="in-game">
-            <div id="timer"></div>
+            <div id="timeholder">
+                <div id="timer">
+                </div>
+            </div>
             <div id="score-board">
                 <h2>Score</h2>
                 <div id="current-score">0</div>
             </div>
             <div id="mathable"></div>
-            <input type="number" name="user-input" id="user-input" class="form-control-lg">
-            <br/>
-            <!-- <button id="submit">Go!</button> -->
+            <div id="main-input">
+                <input type="number" name="user-input" id="user-input" class="form-control-lg" placeholder="START TYPING">
+            </div>
             <button id="pause-button">Pause Game</button>
         </section>
 
