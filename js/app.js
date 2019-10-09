@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-const time = 1;
+let time = 1;
 
 /////////////////////////////////////////////////////////////////////
 // SELECTORS
@@ -36,6 +36,12 @@ const divisionButton = $('#division');
 const randomButton = $('#random');
 const pauseButton = $('#pause-button');
 const resumeButton = $('#resume-button');
+const optionsButton = $('#options-button');
+const timeButton = $('.time-button')
+const saveChanges = $('#save-changes')
+// const t30s = $('#30s');
+// const t60s = $('#60s');
+
 
 // OTHER VARIABLES
 let difficulty = "";
@@ -59,7 +65,7 @@ let game = () => {
     } else {
         random();
     }
-}
+};
 
 let addition = () => {
     var a = Math.ceil(Math.random() * 45) + 5;
@@ -67,7 +73,7 @@ let addition = () => {
     c = a + b;
     gameSpace.text(a + '+' + b);
     console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
-}
+};
 
 let subtraction = () => {
     var a = Math.ceil(Math.random() * 45) + 5;
@@ -75,7 +81,7 @@ let subtraction = () => {
     c = a - b;
     gameSpace.text(a + '-' + b);
     console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
-}
+};
 
 let multiplication = () => {
     var a = Math.ceil(Math.random() * 9) + 3;
@@ -83,7 +89,7 @@ let multiplication = () => {
     c = a * b;
     gameSpace.text(a + 'x' + b);
     console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
-}
+};
 
 let division = () => {
     var b = Math.ceil(Math.random() * 10) + 3;
@@ -91,7 +97,7 @@ let division = () => {
     c = a / b;
     gameSpace.text(a + '÷' + b);
     console.log(`%cAnswer is ${c}`,"color:green; font-size: 20px;");
-}
+};
 
 let random = () => {
     let r = "";
@@ -105,7 +111,7 @@ let random = () => {
     } else {
         division();
     }
-}
+};
 
 let enter = (event) => {
     if (event.keyCode === 13) {
@@ -117,9 +123,9 @@ let enter = (event) => {
         } else {
             console.log("%cWrong" ,"font-size:20px;color:red;");
             wrong();
-        }
-    }
-}
+        };
+    };
+};
 
 userInput.on('keydown', enter);
 
@@ -137,13 +143,13 @@ const correct = () => {
     }
     currentScore.text(scoreCounter);
     userInput.val("");
-}
+};
 
 const wrong = () => {
     scoreCounter--;
     currentScore.text(scoreCounter);
     userInput.val("");
-}
+};
 
 const gameStart = () => {
     countdown.hide();
@@ -151,7 +157,7 @@ const gameStart = () => {
     game();
     startTimer();
     console.log('Game Started');
-}
+};
 
 let startTimer = () => {
     let timeLeft = time;
@@ -167,7 +173,7 @@ let startTimer = () => {
             }
         }
     },1000);
-}
+};
 
 const startGameButtonClicked = () => {
     console.log('clicked on start/restart game button');
@@ -190,14 +196,14 @@ const startGameButtonClicked = () => {
     setTimeout(function(){
         gameStart();
     }, 4000);
-}
+};
 
 const gameEnd = () => {
     console.log('game has ended');
     inGame.hide();
     endGame.show();
     endGameScore.append(scoreCounter);
-}
+};
 
 /////////////////////////////////////////////////////////////////////
 // BUTTONS
@@ -205,13 +211,13 @@ const gameEnd = () => {
 startGame.attr('disabled', true);
 startGame.on('click', () => {
     startGameButtonClicked();
-})
+});
 
 restartGameButton.on('click', () => {
     startGameButtonClicked();
     endGame.hide();
     endGameScore.text("");
-})
+});
 
 difficultyButton.on('click', (event) => {
     let x = event.target.id;
@@ -253,9 +259,32 @@ difficultyButton.on('click', (event) => {
 //     console.log(difficulty);
 // })
 
+optionsButton.on('click', () => {
+    startMenu.hide();
+    optionsMenu.show();
+});
+
+timeButton.on('click', (event) => {
+    timeButton.removeClass('active');
+    $(event.currentTarget).addClass('active');
+    time = $(event.currentTarget).attr('value');
+    masterTime.text(time);
+
+})
+
+saveChanges.on('click', () => {
+    startMenu.show();
+    optionsMenu.hide();
+});
+
+// t30s.on('click', (event) => {
+//     t30s.removeClass('active');
+//     t30s.addClass('active');
+//     time = 30;
+// })
 
 mainMenuButton.on('click',() => {
-    location.reload()
+    location.reload();
     // console.log('clicked main menu button');
     // pausedScreen.hide();
     // countdown.hide();
@@ -263,21 +292,21 @@ mainMenuButton.on('click',() => {
     // endGame.hide();
     // startMenu.show();
     // endGameScore.text("");
-})
+});
 
 pauseButton.on('click', () => {
     console.log('paused game');
     isPaused = true;
     pausedScreen.show();
     inGame.hide();
-})
+});
 
 resumeButton.on('click', () => {
-    console.log('resumed game')
+    console.log('resumed game');
     isPaused = false;
     pausedScreen.hide();
     inGame.show();
-})
+});
 
 // SHOW/HIDE SECTIONS
 countdown.hide();
