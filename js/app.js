@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 30;
+let time = 3000;
 let difficultyMode = 'easy';
 
 /////////////////////////////////////////////////////////////////////
@@ -130,7 +130,6 @@ let multiplication = () => {
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else {
         var a = Math.ceil(Math.random() * 4)+2;
-        // var b = (Math.ceil(Math.random() * 4)+2) * (Math.ceil(Math.random() * 4)+2);
         var y = (Math.ceil(Math.random() * 4)+2);
         var b = y * y
         var c = Math.ceil(Math.random() * 4)+2;
@@ -401,5 +400,4 @@ inGame.hide();
 endGame.hide();
 pausedScreen.hide();
 optionsMenu.hide();
-
 masterTime.text(time);
