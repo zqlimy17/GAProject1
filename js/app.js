@@ -362,18 +362,13 @@ timeButton.on('click', (event) => {
 difficultyOptions.on('click', (event) => {
     difficultyOptions.removeClass('active');
     $(event.currentTarget).addClass('active');
+    difficultyMode = $(event.currentTarget).attr('value');
 });
 
 saveChanges.on('click', () => {
     startMenu.show();
     optionsMenu.hide();
 });
-
-// t30s.on('click', (event) => {
-//     t30s.removeClass('active');
-//     t30s.addClass('active');
-//     time = 30;
-// })
 
 mainMenuButton.on('click',() => {
     location.reload();
