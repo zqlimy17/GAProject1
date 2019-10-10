@@ -5,6 +5,7 @@ let time = 30;
 let difficultyMode = 'easy';
 let timeLeft = time;
 let operation = "";
+let currentHighScore = "";
 
 // OTHER VARIABLES
 let ans = 0;
@@ -25,11 +26,13 @@ const endGameScore = $('#end-game-score');
 const pausedScreen = $('#paused-screen');
 const masterTime = $('#master-time')
 const operationButton = $('.operation-button');
-
-let startCountdown = $('#start-countdown');
+const startCountdown = $('#start-countdown');
+const gameSpace = $('#mathable');
+const highScore = $('#high-score');
 let currentScore = $('#current-score');
-let gameSpace = $('#mathable');
 let scoreCounter = 0;
+
+
 
 // BUTTON SELECTORS
 const restartGameButton = $('#restart-game');
@@ -339,6 +342,16 @@ const gameEnd = () => {
     inGame.hide();
     endGame.show();
     endGameScore.append(scoreCounter);
+    if (currentHighScore < scoreCounter) {
+        currentHighScore = scoreCounter;
+        highScore.text(currentHighScore);
+    };
+    if (currentHighScore >= 25) {
+        difficultyOptions.eq(1).attr('disabled', false);
+    };
+    if (currentHighScore >= 250) {
+        difficultyOptions.eq(1).attr('disabled', false);
+    }
 };
 
 /////////////////////////////////////////////////////////////////////

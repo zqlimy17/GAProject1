@@ -22,11 +22,11 @@
             <div>
                 <h3>Select Operation:</h3>
                 <div class="row flex">
-                    <button type="button" value="easy" class="btn btn-outline-warning flex-fill operation-button">Addition</button>
-                    <button type="button" value="medium" class="btn btn-outline-warning flex-fill operation-button">Subtraction</button>
-                    <button type="button" value="hard" class="btn btn-outline-warning flex-fill operation-button">Multiplication</button>
-                    <button type="button" value="hard" class="btn btn-outline-warning flex-fill operation-button">Division</button>
-                    <button type="button" value="hard" class="btn btn-outline-warning flex-fill operation-button">Random</button>
+                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Addition</button>
+                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Subtraction</button>
+                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Multiplication</button>
+                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Division</button>
+                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Random</button>
                 </div>
             </div>
             <div class="row">
@@ -46,8 +46,8 @@
                 <div class="col-sm-6 flex">
                     <p class="flex-fill align-self-center">Difficulty:</p>
                     <button type="button" value="easy" class="btn btn-outline-warning flex-fill active difficulty-options">Easy</button>
-                    <button type="button" value="medium" class="btn btn-outline-warning flex-fill difficulty-options">Medium</button>
-                    <button type="button" value="hard" class="btn btn-outline-warning flex-fill difficulty-options">Hard</button>
+                    <button disabled type="button" value="medium" class="btn btn-outline-warning flex-fill difficulty-options">Medium</button>
+                    <button disabled type="button" value="hard" class="btn btn-outline-warning flex-fill difficulty-options">Hard</button>
                 </div>
             </div>
         </section>
@@ -85,10 +85,7 @@
         <section id="end-game">
             <div id="end-game-score"></div>
             <div>
-                <input type="text" placeholder="Enter Name" id="player-name">
-            </div>
-            <div class="highscore-board">
-                <h1>High-score board goes here</h1>
+                <p>High Score: <span id="high-score">-</span> </p>
             </div>
             <button id="restart-game">Try Again!</button>
             <button class="back-to-main-menu">Main Menu</button>
