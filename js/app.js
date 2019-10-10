@@ -33,8 +33,6 @@ const highScore = $('.high-score');
 let currentScore = $('#current-score');
 let scoreCounter = 0;
 
-
-
 // BUTTON SELECTORS
 const restartGameButton = $('#restart-game');
 const mainMenuButton = $('.back-to-main-menu');
@@ -50,8 +48,6 @@ const optionsButton = $('#options-button');
 const timeButton = $('.time-button')
 const difficultyOptions = $('.difficulty-options')
 const saveChanges = $('#save-changes')
-
-
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
@@ -130,19 +126,42 @@ let multiplication = () => {
         gameSpace.text(a + 'x' + b);
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
+        let randoming = Math.random();
         var a = Math.ceil(Math.random() * 8)+4;
         var b = Math.ceil(Math.random() * 4)+1;
-        ans = a * a * b;
-        gameSpace.text(`${a}² x ${b}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        if (randoming < 0.5) {
+            ans = a * a * b;
+            gameSpace.text(`${a}² x ${b}`);
+            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        } else {
+            ans = a * b * b;
+            gameSpace.text(`${a} x ${b}²`);
+            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        }
     } else {
+        let randoming = Math.random();
         var a = Math.ceil(Math.random() * 4)+2;
         var y = (Math.ceil(Math.random() * 4)+2);
-        var b = y * y
-        var c = Math.ceil(Math.random() * 4)+2;
-        ans = a * a * Math.sqrt(b) * c;
-        gameSpace.text(`${a}² x √${b} x ${c}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        if (randoming < 0.33) {
+            var b = y * y;
+            var c = Math.ceil(Math.random() * 4)+2;
+            ans = a * a * Math.sqrt(b) * c;
+            gameSpace.text(`${a}² x √${b} x ${c}`);
+            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        } else if (randoming < 0.67) {
+            var c = y * y;
+            var b = Math.ceil(Math.random() * 4)+2;
+            ans = a * b * b * Math.sqrt(c);
+            gameSpace.text(`${a} x ${b}² x √${c}`);
+            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        } else {
+            var d = (Math.ceil(Math.random() * 4)+2);
+            var b = (Math.ceil(Math.random() * 4)+2);
+            var c = (Math.ceil(Math.random() * 4)+2);
+            ans = a * b * c * d;
+            gameSpace.text(`${a} x ${b} x ${c} x ${d}`);
+            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
+        }
     }
 };
 
