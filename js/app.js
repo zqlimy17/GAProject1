@@ -24,7 +24,6 @@ const timer = $('#timer');
 const endGameScore = $('#end-game-score');
 const pausedScreen = $('#paused-screen');
 const masterTime = $('#master-time')
-const optionsMenu = $('#options-menu')
 const operationButton = $('.operation-button');
 
 let startCountdown = $('#start-countdown');
@@ -365,11 +364,6 @@ operationButton.on('click', (event) => {
     console.log(operation);
 });
 
-optionsButton.on('click', () => {
-    startMenu.hide();
-    optionsMenu.show();
-});
-
 timeButton.on('click', (event) => {
     timeButton.removeClass('active');
     $(event.currentTarget).addClass('active');
@@ -385,7 +379,6 @@ difficultyOptions.on('click', (event) => {
 
 saveChanges.on('click', () => {
     startMenu.show();
-    optionsMenu.hide();
 });
 
 mainMenuButton.on('click',() => {
@@ -418,5 +411,4 @@ countdown.hide();
 inGame.hide();
 endGame.hide();
 pausedScreen.hide();
-optionsMenu.hide();
 masterTime.text(time);
