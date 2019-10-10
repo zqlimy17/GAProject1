@@ -28,7 +28,8 @@ const masterTime = $('#master-time')
 const operationButton = $('.operation-button');
 const startCountdown = $('#start-countdown');
 const gameSpace = $('#mathable');
-const highScore = $('#high-score');
+const mainMenuHighScore = $('#main-menu-high-score')
+const highScore = $('.high-score');
 let currentScore = $('#current-score');
 let scoreCounter = 0;
 
@@ -342,6 +343,7 @@ const gameEnd = () => {
     inGame.hide();
     endGame.show();
     endGameScore.append(scoreCounter);
+    mainMenuHighScore.show();
     if (currentHighScore < scoreCounter) {
         currentHighScore = scoreCounter;
         highScore.text(currentHighScore);
@@ -374,7 +376,7 @@ operationButton.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     operation = x;
     startGame.attr('disabled', false);
-    console.log(operation);
+    console.log(x);
 });
 
 timeButton.on('click', (event) => {
@@ -420,6 +422,7 @@ resumeButton.on('click', () => {
 });
 
 // SHOW/HIDE SECTIONS
+mainMenuHighScore.hide();
 countdown.hide();
 inGame.hide();
 endGame.hide();

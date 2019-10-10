@@ -22,15 +22,18 @@
             <div>
                 <h3>Select Operation:</h3>
                 <div class="row flex">
-                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Addition</button>
-                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Subtraction</button>
-                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Multiplication</button>
-                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Division</button>
-                    <button type="button" class="btn btn-outline-warning flex-fill operation-button">Random</button>
+                    <button id="addition" type="button" class="btn btn-outline-warning flex-fill operation-button">Addition</button>
+                    <button id="subtraction" type="button" class="btn btn-outline-warning flex-fill operation-button">Subtraction</button>
+                    <button id="multiplication" type="button" class="btn btn-outline-warning flex-fill operation-button">Multiplication</button>
+                    <button id="division" type="button" class="btn btn-outline-warning flex-fill operation-button">Division</button>
+                    <button id="random" type="button" class="btn btn-outline-warning flex-fill operation-button">Random</button>
                 </div>
             </div>
             <div class="row">
                 <button id="start-game" class="btn btn-danger btn-lg btn-block">Start Game</button>
+            </div>
+            <div>
+                <p id="main-menu-high-score">High Score: <span class="high-score">-</span> </p>
             </div>
             <div class="instructions">
                 <h4>Instructions:</h4>
@@ -85,7 +88,7 @@
         <section id="end-game">
             <div id="end-game-score"></div>
             <div>
-                <p>High Score: <span id="high-score">-</span> </p>
+                <p>High Score: <span class="high-score">-</span> </p>
             </div>
             <button id="restart-game">Try Again!</button>
             <button class="back-to-main-menu">Main Menu</button>

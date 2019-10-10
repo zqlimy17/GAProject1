@@ -251,21 +251,3 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* OPTIONS */
-
-#options-menu {
-    width: 30%;
-    text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-}
-
-#options-menu p {
-    margin: 0;
-}
-
-#options-menu button {
-    margin: 5px;
-}
