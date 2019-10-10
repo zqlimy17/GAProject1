@@ -1,8 +1,9 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 60;
+let time = 5;
 let difficultyMode = 'easy';
+let timeLeft = time;
 
 /////////////////////////////////////////////////////////////////////
 // SELECTORS
@@ -36,6 +37,7 @@ const divisionButton = $('#division');
 const randomButton = $('#random');
 const pauseButton = $('#pause-button');
 const resumeButton = $('#resume-button');
+const pausedMainMenu = $('#paused-main-menu')
 const optionsButton = $('#options-button');
 const timeButton = $('.time-button')
 const difficultyOptions = $('.difficulty-options')
@@ -287,19 +289,27 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
-    let timeLeft = time;
+    console.log('123')
+    timeLeft = time;
     timer.text(timeLeft);
     console.log('timer started');
     let x = setInterval(function() {
         if (!isPaused) {
             timeLeft--;
             timer.text(timeLeft);
-            if (timeLeft === 0) {
-                clearInterval(x);
-                gameEnd();
-            }
+        }
+        if (timeLeft === 0) {
+            clearInterval(x);
+            gameEnd();
         }
     },1000);
+    pausedMainMenu.on('click', () => {
+    console.log("paused-main-menu is working...")
+    clearInterval(x);
+    isPaused = false;
+    console.log(timeLeft);
+    console.log(time);
+})
 };
 
 const startGameButtonClicked = () => {
@@ -378,14 +388,14 @@ saveChanges.on('click', () => {
 });
 
 mainMenuButton.on('click',() => {
-    location.reload();
-    // console.log('clicked main menu button');
-    // pausedScreen.hide();
-    // countdown.hide();
-    // inGame.hide();
-    // endGame.hide();
-    // startMenu.show();
-    // endGameScore.text("");
+    // location.reload();
+    console.log('clicked main menu button');
+    pausedScreen.hide();
+    countdown.hide();
+    inGame.hide();
+    endGame.hide();
+    startMenu.show();
+    endGameScore.text("");
 });
 
 pauseButton.on('click', () => {
