@@ -1,9 +1,14 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 5;
+let time = 30;
 let difficultyMode = 'easy';
 let timeLeft = time;
+let operation = "";
+
+// OTHER VARIABLES
+let ans = 0;
+let isPaused = false;
 
 /////////////////////////////////////////////////////////////////////
 // SELECTORS
@@ -20,7 +25,7 @@ const endGameScore = $('#end-game-score');
 const pausedScreen = $('#paused-screen');
 const masterTime = $('#master-time')
 const optionsMenu = $('#options-menu')
-const difficultyButton = $('.difficulty-button');
+const operationButton = $('.operation-button');
 
 let startCountdown = $('#start-countdown');
 let currentScore = $('#current-score');
@@ -43,10 +48,7 @@ const timeButton = $('.time-button')
 const difficultyOptions = $('.difficulty-options')
 const saveChanges = $('#save-changes')
 
-// OTHER VARIABLES
-let difficulty = "";
-let ans = 0;
-let isPaused = false;
+
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
@@ -54,13 +56,13 @@ let isPaused = false;
 let game = () => {
     userInput.focus();
     // IF STATEMENT FOR GAME DIFFICULTY
-    if (difficulty === "addition") {
+    if (operation === "addition") {
         addition();
-    } else if (difficulty === "subtraction") {
+    } else if (operation === "subtraction") {
         subtraction();
-    } else if (difficulty === "multiplication") {
+    } else if (operation === "multiplication") {
         multiplication();
-    } else if (difficulty === "division") {
+    } else if (operation === "division") {
         division();
     } else {
         random();
@@ -206,13 +208,13 @@ userInput.on('keydown', enter);
 
 const correct = () => {
     if (difficultyMode === "easy") {
-        if (difficulty === "addition") {
+        if (operation === "addition") {
             scoreCounter++;
-        } else if (difficulty === "subtraction") {
+        } else if (operation === "subtraction") {
             scoreCounter = scoreCounter + 2 ;
-        } else if (difficulty === "multiplication") {
+        } else if (operation === "multiplication") {
             scoreCounter = scoreCounter + 3;
-        } else if (difficulty === "division") {
+        } else if (operation === "division") {
             scoreCounter = scoreCounter + 4;
         } else {
             if (gameSpace.text().includes('+')) {
@@ -228,13 +230,13 @@ const correct = () => {
         currentScore.text(scoreCounter);
         userInput.val("");
     } else if (difficultyMode === "medium") {
-        if (difficulty === "addition") {
+        if (operation === "addition") {
             scoreCounter = scoreCounter + 10;
-        } else if (difficulty === "subtraction") {
+        } else if (operation === "subtraction") {
             scoreCounter = scoreCounter + 20 ;
-        } else if (difficulty === "multiplication") {
+        } else if (operation === "multiplication") {
             scoreCounter = scoreCounter + 30;
-        } else if (difficulty === "division") {
+        } else if (operation === "division") {
             scoreCounter = scoreCounter + 40;
         } else {
             if (gameSpace.text().includes('+')) {
@@ -250,13 +252,13 @@ const correct = () => {
         currentScore.text(scoreCounter);
         userInput.val("");
     } else {
-        if (difficulty === "addition") {
+        if (operation === "addition") {
             scoreCounter = scoreCounter + 100;
-        } else if (difficulty === "subtraction") {
+        } else if (operation === "subtraction") {
             scoreCounter = scoreCounter + 200 ;
-        } else if (difficulty === "multiplication") {
+        } else if (operation === "multiplication") {
             scoreCounter = scoreCounter + 300;
-        } else if (difficulty === "division") {
+        } else if (operation === "division") {
             scoreCounter = scoreCounter + 400;
         } else {
             if (gameSpace.text().includes('+')) {
@@ -289,7 +291,6 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
-    console.log('123')
     timeLeft = time;
     timer.text(timeLeft);
     console.log('timer started');
@@ -303,13 +304,13 @@ let startTimer = () => {
             gameEnd();
         }
     },1000);
+
     pausedMainMenu.on('click', () => {
-    console.log("paused-main-menu is working...")
-    clearInterval(x);
-    isPaused = false;
-    console.log(timeLeft);
-    console.log(time);
-})
+        clearInterval(x);
+        isPaused = false;
+        console.log(timeLeft);
+        console.log(time);
+    })
 };
 
 const startGameButtonClicked = () => {
@@ -355,13 +356,13 @@ restartGameButton.on('click', () => {
     endGameScore.text("");
 });
 
-difficultyButton.on('click', (event) => {
+operationButton.on('click', (event) => {
     let x = event.target.id;
-    difficultyButton.removeClass('active');
-    $(`#${x}`).addClass('active');
-    difficulty = x;
+    operationButton.removeClass('active');
+    $(event.currentTarget).addClass('active');
+    operation = x;
     startGame.attr('disabled', false);
-    console.log(difficulty);
+    console.log(operation);
 });
 
 optionsButton.on('click', () => {

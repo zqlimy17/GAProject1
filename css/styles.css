@@ -47,23 +47,26 @@ footer {
     transform: translateX(-50%) translateY(-50%);
 }
 
-.difficulty-button {
+.operation-button {
     font-size: 1.5em;
-    border-radius: 30px;
-    border: 1px solid black;
-    width:19%;
+    width:18%;
     margin-bottom: 20px;
-    padding:10px;
+    padding:0;
+    margin: 5px;
+    color: white;
 }
 
-.difficulty-button:hover {
+.operation-button:hover {
     border: 1px solid lightblue;
     cursor: pointer;
 }
 
-.active {
-    background-color: #B39132;
-}
+/*.active {
+    background-color: #ffc107;
+    color: black;
+    text-shadow: 1px 1px white;
+
+}*/
 
 #start-game {
     border: 1px solid #66B39C;
@@ -111,8 +114,7 @@ footer {
 #user-input {
     width: 60%;
     text-align: center;
-    border: 0;
-    border-bottom: 2px solid white;
+    border: 2px solid white;
     font-size: 4em;
     line-height: 4em;
     height: 2em;
@@ -134,10 +136,10 @@ footer {
 }
 
 #user-input.flash {
-  -webkit-animation-name: flash;
-  animation-name: flash;
-   animation-duration: 600ms;
-
+    -webkit-animation-name: flash;
+    animation-name: flash;
+    animation-duration: 600ms;
+    border: 2px solid lime;
 }
 
 @-webkit-keyframes flash {
@@ -167,10 +169,12 @@ footer {
 }
 
 #user-input.shake {
- animation-name: shaker;
- animation-duration: 200ms;
- animation-timing-function: ease-in-out;
- animation-delay: 0s;
+    animation-name: shaker;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    border: 2px solid red;
+
 }
 
 @keyframes shaker {
@@ -211,7 +215,7 @@ footer {
   opacity: 1;
  }
  90% {
-  transform: translate(-7px, -19px) rotate(2deg);
+  transform: translate(-7px, -19px) rotate(4deg);
   opacity: 0.5;
  }
 }
