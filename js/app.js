@@ -130,7 +130,7 @@ let multiplication = () => {
         gameSpace.text(a + 'x' + b);
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
-        var a = Math.ceil(Math.random() * 8)+1;
+        var a = Math.ceil(Math.random() * 8)+4;
         var b = Math.ceil(Math.random() * 4)+1;
         ans = a * a * b;
         gameSpace.text(`${a}² x ${b}`);
@@ -352,7 +352,7 @@ const gameEnd = () => {
         difficultyOptions.eq(1).attr('disabled', false);
     };
     if (currentHighScore >= 250) {
-        difficultyOptions.eq(1).attr('disabled', false);
+        difficultyOptions.eq(2).attr('disabled', false);
     }
 };
 
@@ -376,7 +376,7 @@ operationButton.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     operation = x;
     startGame.attr('disabled', false);
-    console.log(x);
+    console.log(`${x} is selected`);
 });
 
 timeButton.on('click', (event) => {

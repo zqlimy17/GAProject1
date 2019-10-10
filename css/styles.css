@@ -61,16 +61,14 @@ footer {
     cursor: pointer;
 }
 
-/*.active {
-    background-color: #ffc107;
-    color: black;
-    text-shadow: 1px 1px white;
-
-}*/
-
 #start-game {
     border: 1px solid #66B39C;
     margin-bottom: 20px;
+}
+
+#main-menu-high-score {
+    font-size: 2em;
+    color: #ffc107;
 }
 
 .lead {
