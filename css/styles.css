@@ -76,6 +76,10 @@ footer {
     font-weight: 900;
 }
 
+.difficulty-options {
+    pointer-events: none;
+}
+
 /* COUNTDOWN */
 
 #countdown {

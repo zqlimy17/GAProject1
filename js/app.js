@@ -440,6 +440,10 @@ resumeButton.on('click', () => {
     inGame.show();
 });
 
+// TOOLTIPS
+  $('[data-toggle="tooltip"]').tooltip()
+
+
 // SHOW/HIDE SECTIONS
 mainMenuHighScore.hide();
 countdown.hide();
