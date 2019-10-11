@@ -368,9 +368,11 @@ const gameEnd = () => {
         highScore.text(currentHighScore);
     };
     if (currentHighScore >= 25) {
+        $('#medium-tooltip').tooltip('dispose')
         difficultyOptions.eq(1).attr('disabled', false);
     };
     if (currentHighScore >= 250) {
+        $('#hard-tooltip').tooltip('dispose')
         difficultyOptions.eq(2).attr('disabled', false);
     }
 };
@@ -390,6 +392,7 @@ restartGameButton.on('click', () => {
 });
 
 operationButton.on('click', (event) => {
+    $('#start-tooltip').tooltip('dispose');
     let x = event.target.id;
     operationButton.removeClass('active');
     $(event.currentTarget).addClass('active');
