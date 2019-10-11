@@ -101,14 +101,14 @@ let subtraction = () => {
         gameSpace.text(a + '-' + b);
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
-        var a = Math.ceil(Math.random() * 50) + 50;
+        var a = Math.ceil(Math.random() * 25) + 25;
         var b = Math.ceil(Math.random() * 47) + 3;
         var c = Math.ceil(Math.random() * 45) + 5;
         ans = a - b - c;
         gameSpace.text(`${a} - ${b} - ${c}`);
         console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else {
-        var a = Math.ceil(Math.random() * 50) + 100;
+        var a = Math.ceil(Math.random() * 80) + 20;
         var b = Math.ceil(Math.random() * 47) + 3;
         var c = Math.ceil(Math.random() * 45) + 5;
         var d = Math.ceil(Math.random() * 47) + 3;
