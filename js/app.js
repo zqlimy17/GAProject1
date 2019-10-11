@@ -368,11 +368,13 @@ const gameEnd = () => {
         highScore.text(currentHighScore);
     };
     if (currentHighScore >= 25) {
-        $('#medium-tooltip').tooltip('dispose')
+        $('#medium-tooltip').tooltip('dispose');
+        $('#medium-button').css('pointer-events', '');
         difficultyOptions.eq(1).attr('disabled', false);
     };
     if (currentHighScore >= 250) {
         $('#hard-tooltip').tooltip('dispose')
+        $('#hard-button').css('pointer-events', '');
         difficultyOptions.eq(2).attr('disabled', false);
     }
 };
@@ -412,6 +414,7 @@ difficultyOptions.on('click', (event) => {
     difficultyOptions.removeClass('active');
     $(event.currentTarget).addClass('active');
     difficultyMode = $(event.currentTarget).attr('value');
+    console.log($(event.currentTarget).attr('value'));
 });
 
 saveChanges.on('click', () => {
