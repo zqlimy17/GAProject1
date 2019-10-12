@@ -4,7 +4,7 @@ let difficultyMode = 'easy';
 let activeGameMode = "Timed";
 let timeLeft = time;
 let operation = "";
-let currentHighScore = 500;
+let currentHighScore = "";
 let ans = 0;
 let isPaused = false;
 let scoreCounter = 0;
@@ -233,73 +233,99 @@ userInput.on('keydown', function (event) {
 });
 
 const correct = () => {
-    if (difficultyMode === "easy") {
-        if (operation === "addition") {
-            scoreCounter++;
-        } else if (operation === "subtraction") {
-            scoreCounter = scoreCounter + 2 ;
-        } else if (operation === "multiplication") {
-            scoreCounter = scoreCounter + 3;
-        } else if (operation === "division") {
-            scoreCounter = scoreCounter + 4;
-        } else {
-            if (gameSpace.text().includes('+')) {
-                scoreCounter = scoreCounter + 2;
-            } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 4;
-            } else if (gameSpace.text().includes('x')) {
-                scoreCounter = scoreCounter + 6;
-            } else {
-                scoreCounter = scoreCounter + 8;
+    switch (difficultyMode) {
+        case "easy":
+            switch (operation) {
+                case "addition":
+                    scoreCounter = scoreCounter + 2;
+                    break;
+                case "subtraction":
+                    scoreCounter = scoreCounter + 3;
+                    break;
+                case "multiplication":
+                    scoreCounter = scoreCounter + 4;
+                    break;
+                case "division":
+                    scoreCounter = scoreCounter + 5;
+                    break;
+                default:
+                    switch (true) {
+                        case (gameSpace.text().includes('+')):
+                            scoreCounter = scoreCounter + 4;
+                            break;
+                        case (gameSpace.text().includes('-')):
+                            scoreCounter = scoreCounter + 6;
+                            break;
+                        case (gameSpace.text().includes('x')):
+                            scoreCounter = scoreCounter + 8;
+                            break;
+                        default:
+                            scoreCounter = scoreCounter + 10;
+                    }
+                }
+                break;
+        case "medium":
+            switch (operation) {
+                case "addition":
+                    scoreCounter = scoreCounter + 20;
+                    break;
+                case "subtraction":
+                    scoreCounter = scoreCounter + 30;
+                    break;
+                case "multiplication":
+                    scoreCounter = scoreCounter + 40;
+                    break;
+                case "division":
+                    scoreCounter = scoreCounter + 50;
+                    break;
+                default:
+                    switch (true) {
+                        case (gameSpace.text().includes('+')):
+                            scoreCounter = scoreCounter + 40;
+                            break;
+                        case (gameSpace.text().includes('-')):
+                            scoreCounter = scoreCounter + 60;
+                            break;
+                        case (gameSpace.text().includes('x')):
+                            scoreCounter = scoreCounter + 80;
+                            break;
+                        default:
+                            scoreCounter = scoreCounter + 100;
+                    }
             }
-        }
-        currentScore.text(scoreCounter);
-        userInput.val("");
-    } else if (difficultyMode === "medium") {
-        if (operation === "addition") {
-            scoreCounter = scoreCounter + 10;
-        } else if (operation === "subtraction") {
-            scoreCounter = scoreCounter + 20 ;
-        } else if (operation === "multiplication") {
-            scoreCounter = scoreCounter + 30;
-        } else if (operation === "division") {
-            scoreCounter = scoreCounter + 40;
-        } else {
-            if (gameSpace.text().includes('+')) {
-                scoreCounter = scoreCounter + 20;
-            } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 40 ;
-            } else if (gameSpace.text().includes('x')) {
-                scoreCounter = scoreCounter + 60;
-            } else {
-                scoreCounter = scoreCounter + 80;
+            break;
+        default:
+            switch (operation) {
+                case "addition":
+                    scoreCounter = scoreCounter + 200;
+                    break;
+                case "subtraction":
+                    scoreCounter = scoreCounter + 300;
+                    break;
+                case "multiplication":
+                    scoreCounter = scoreCounter + 400;
+                    break;
+                case "division":
+                    scoreCounter = scoreCounter + 500;
+                    break;
+                default:
+                    switch (true) {
+                        case (gameSpace.text().includes('+')):
+                            scoreCounter = scoreCounter + 400;
+                            break;
+                        case (gameSpace.text().includes('-')):
+                            scoreCounter = scoreCounter + 600;
+                            break;
+                        case (gameSpace.text().includes('x')):
+                            scoreCounter = scoreCounter + 800;
+                            break;
+                        default:
+                            scoreCounter = scoreCounter + 1000;
+                    }
             }
-        }
-        currentScore.text(scoreCounter);
-        userInput.val("");
-    } else {
-        if (operation === "addition") {
-            scoreCounter = scoreCounter + 100;
-        } else if (operation === "subtraction") {
-            scoreCounter = scoreCounter + 200 ;
-        } else if (operation === "multiplication") {
-            scoreCounter = scoreCounter + 300;
-        } else if (operation === "division") {
-            scoreCounter = scoreCounter + 400;
-        } else {
-            if (gameSpace.text().includes('+')) {
-                scoreCounter = scoreCounter + 200;
-            } else if (gameSpace.text().includes('-')) {
-                scoreCounter = scoreCounter + 400;
-            } else if (gameSpace.text().includes('x')) {
-                scoreCounter = scoreCounter + 600;
-            } else {
-                scoreCounter = scoreCounter + 800;
-            }
-        }
-        currentScore.text(scoreCounter);
-        userInput.val("");
     }
+    currentScore.text(scoreCounter);
+    userInput.val("");
 };
 
 const wrong = () => {
