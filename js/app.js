@@ -22,6 +22,7 @@ const endGame = $('#end-game');
 const scoreBoard = $('#score-board');
 const startGame = $('#start-game');
 const userInput = $('#user-input');
+const timeBar = $('#time-bar');
 const timer = $('#timer');
 const endGameScore = $('#end-game-score');
 const pausedScreen = $('#paused-screen');
@@ -324,14 +325,17 @@ let startTimer = () => {
         console.log('timer started');
         let x = setInterval(function() {
             if (!isPaused) {
-                timeLeft--;
+                timeLeft = timeLeft - 0.01;
                 timer.text(timeLeft);
+
+                timeBar.width(((timeLeft/time)*100)+'%');
+
             }
-            if (timeLeft === 0) {
+            if (timeLeft <= 0.01) {
                 clearInterval(x);
                 gameEnd();
             }
-        },1000);
+        },10);
         pausedMainMenu.on('click', () => {
             clearInterval(x);
             isPaused = false;
