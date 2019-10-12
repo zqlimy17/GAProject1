@@ -209,7 +209,7 @@ let enter = (event) => {
     if (answer == ans) {
         userInput.addClass('flash')
         setTimeout(function() {
-        userInput.removeClass('flash')
+            userInput.removeClass('flash')
         }, 400);
         console.log('Correct');
         correct();
@@ -217,7 +217,7 @@ let enter = (event) => {
     } else {
         userInput.addClass('shake')
         setTimeout(function() {
-        userInput.removeClass('shake')
+            userInput.removeClass('shake')
         }, 400);
         console.log("%cWrong" ,"font-size:20px;color:red;");
         wrong();
@@ -319,6 +319,7 @@ const gameStart = () => {
 let startTimer = () => {
     if (activeGameMode === "Timed") {
         timeBar.show();
+        timeBar.addClass('colorchange');
         timeLeft = time;
         let x = setInterval(function() {
             if (!isPaused) {
@@ -442,6 +443,7 @@ mainMenuButton.on('click',() => {
 });
 
 pauseButton.on('click', () => {
+    timeBar.css('animation-play-state', 'paused');
     console.log('paused game');
     isPaused = true;
     pausedScreen.show();
@@ -449,6 +451,7 @@ pauseButton.on('click', () => {
 });
 
 resumeButton.on('click', () => {
+    timeBar.css('animation-play-state', '');
     console.log('resumed game');
     isPaused = false;
     pausedScreen.hide();
@@ -456,7 +459,7 @@ resumeButton.on('click', () => {
 });
 
 // TOOLTIPS
-  $('[data-toggle="tooltip"]').tooltip();
+$('[data-toggle="tooltip"]').tooltip();
 
 // SHOW/HIDE SECTIONS
 mainMenuHighScore.hide();

@@ -256,11 +256,35 @@ input[type=number]::-webkit-outer-spin-button {
 
 #time-bar {
     position: absolute;
-    background-color: sienna;
     width: 100%;
     height: 115px;
     z-index: -1;
     border-radius: 5px;
+    border-right: 1px solid white;
+}
+
+#time-bar.colorchange {
+    animation: colorchange 30s;
+    -webkit-animation: colorchange 30s; /* Chrome and Safari */
+
+}
+
+@keyframes colorchange {
+    0% {
+        background: green;
+    }
+
+    50% {
+        background: green;
+    }
+
+    80% {
+        background: orange;
+    }
+
+    100% {
+        background: red;
+    }
 }
 
 .game-instructions-container {
