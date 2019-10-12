@@ -46,10 +46,8 @@ const pauseButton = $('#pause-button');
 const inGameEndGame = $('#in-game-end-game');
 const resumeButton = $('#resume-button');
 const pausedMainMenu = $('#paused-main-menu');
-const optionsButton = $('#options-button');
 const gameMode = $('.game-mode');
 const difficultyOptions = $('.difficulty-options');
-const saveChanges = $('#save-changes');
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
@@ -315,7 +313,7 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
-    if (activeGameMode == "Timed") {
+    if (activeGameMode === "Timed") {
         timer.show();
         timeLeft = time;
         timer.text(timeLeft);
@@ -330,16 +328,14 @@ let startTimer = () => {
                 gameEnd();
             }
         },1000);
-
         pausedMainMenu.on('click', () => {
             clearInterval(x);
             isPaused = false;
         })
         inGameEndGame.on('click', () => {
             clearInterval(x);
-            gameEnd();
         })
-    } else if (activeGameMode == "Casual") {
+    } else if (activeGameMode === "Casual") {
         timer.hide();
     }
 };
@@ -418,6 +414,7 @@ gameMode.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     masterTime.text($(event.currentTarget).attr('value'));
     activeGameMode = $(event.currentTarget).text();
+    console.log($(event.currentTarget).text());
 });
 
 difficultyOptions.on('click', (event) => {
@@ -427,12 +424,12 @@ difficultyOptions.on('click', (event) => {
     console.log($(event.currentTarget).attr('value'));
 });
 
-saveChanges.on('click', () => {
-    startMenu.show();
+inGameEndGame.on('click', () => {
+    gameEnd();
+    console.log("clicked end game button")
 });
 
 mainMenuButton.on('click',() => {
-    // location.reload();
     console.log('clicked main menu button');
     pausedScreen.hide();
     countdown.hide();
@@ -458,7 +455,6 @@ resumeButton.on('click', () => {
 
 // TOOLTIPS
   $('[data-toggle="tooltip"]').tooltip()
-
 
 // SHOW/HIDE SECTIONS
 mainMenuHighScore.hide();
