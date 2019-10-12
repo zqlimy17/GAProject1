@@ -3,6 +3,7 @@
 
 let time = 30;
 let difficultyMode = 'easy';
+let activeGameMode = "timed";
 let timeLeft = time;
 let operation = "";
 let currentHighScore = "";
@@ -45,7 +46,7 @@ const pauseButton = $('#pause-button');
 const resumeButton = $('#resume-button');
 const pausedMainMenu = $('#paused-main-menu')
 const optionsButton = $('#options-button');
-const timeButton = $('.time-button')
+const gameMode = $('.game-mode')
 const difficultyOptions = $('.difficulty-options')
 const saveChanges = $('#save-changes')
 
@@ -313,26 +314,28 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
-    timeLeft = time;
-    timer.text(timeLeft);
-    console.log('timer started');
-    let x = setInterval(function() {
-        if (!isPaused) {
-            timeLeft--;
-            timer.text(timeLeft);
-        }
-        if (timeLeft === 0) {
-            clearInterval(x);
-            gameEnd();
-        }
-    },1000);
+    if (activeGameMode == "timed") {
+        timeLeft = time;
+        timer.text(timeLeft);
+        console.log('timer started');
+        let x = setInterval(function() {
+            if (!isPaused) {
+                timeLeft--;
+                timer.text(timeLeft);
+            }
+            if (timeLeft === 0) {
+                clearInterval(x);
+                gameEnd();
+            }
+        },1000);
 
-    pausedMainMenu.on('click', () => {
-        clearInterval(x);
-        isPaused = false;
-        console.log(timeLeft);
-        console.log(time);
-    })
+        pausedMainMenu.on('click', () => {
+            clearInterval(x);
+            isPaused = false;
+        })
+    } else {
+        timer.hide()
+    }
 };
 
 const startGameButtonClicked = () => {
@@ -403,11 +406,11 @@ operationButton.on('click', (event) => {
     console.log(`${x} is selected`);
 });
 
-timeButton.on('click', (event) => {
-    timeButton.removeClass('active');
+gameMode.on('click', (event) => {
+    gameMode.removeClass('active');
     $(event.currentTarget).addClass('active');
-    time = $(event.currentTarget).attr('value');
-    masterTime.text(time);
+    masterTime.text($(event.currentTarget).attr('value'));
+    activeGameMode = $(event.currentTarget).text();
 });
 
 difficultyOptions.on('click', (event) => {
@@ -456,4 +459,4 @@ countdown.hide();
 inGame.hide();
 endGame.hide();
 pausedScreen.hide();
-masterTime.text(time);
+masterTime.text(time + ' seconds');
