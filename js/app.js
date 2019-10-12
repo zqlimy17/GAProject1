@@ -3,7 +3,7 @@
 
 let time = 30;
 let difficultyMode = 'easy';
-let activeGameMode = "timed";
+let activeGameMode = "Timed";
 let timeLeft = time;
 let operation = "";
 let currentHighScore = "";
@@ -43,12 +43,13 @@ const multiplicationButton = $('#multiplication');
 const divisionButton = $('#division');
 const randomButton = $('#random');
 const pauseButton = $('#pause-button');
+const inGameEndGame = $('#in-game-end-game');
 const resumeButton = $('#resume-button');
-const pausedMainMenu = $('#paused-main-menu')
+const pausedMainMenu = $('#paused-main-menu');
 const optionsButton = $('#options-button');
-const gameMode = $('.game-mode')
-const difficultyOptions = $('.difficulty-options')
-const saveChanges = $('#save-changes')
+const gameMode = $('.game-mode');
+const difficultyOptions = $('.difficulty-options');
+const saveChanges = $('#save-changes');
 
 /////////////////////////////////////////////////////////////////////
 // FUNCTIONS
@@ -314,7 +315,8 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
-    if (activeGameMode == "timed") {
+    if (activeGameMode == "Timed") {
+        timer.show();
         timeLeft = time;
         timer.text(timeLeft);
         console.log('timer started');
@@ -333,8 +335,12 @@ let startTimer = () => {
             clearInterval(x);
             isPaused = false;
         })
-    } else {
-        timer.hide()
+        inGameEndGame.on('click', () => {
+            clearInterval(x);
+            gameEnd();
+        })
+    } else if (activeGameMode == "Casual") {
+        timer.hide();
     }
 };
 
@@ -386,6 +392,7 @@ const gameEnd = () => {
 // BUTTONS
 
 startGame.attr('disabled', true);
+
 startGame.on('click', () => {
     startGameButtonClicked();
 });
