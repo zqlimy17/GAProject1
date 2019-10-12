@@ -205,28 +205,32 @@ let random = () => {
 };
 
 let enter = (event) => {
-    if (event.keyCode === 13) {
-        let answer = event.target.value
-        if (answer == ans) {
-            userInput.addClass('flash')
-            setTimeout(function() {
-            userInput.removeClass('flash')
-            }, 400);
-            console.log('Correct');
-            correct();
-            game();
-        } else {
-            userInput.addClass('shake')
-            setTimeout(function() {
-            userInput.removeClass('shake')
-            }, 400);
-            console.log("%cWrong" ,"font-size:20px;color:red;");
-            wrong();
-        };
+    let answer = event.target.value;
+    if (answer == ans) {
+        userInput.addClass('flash')
+        setTimeout(function() {
+        userInput.removeClass('flash')
+        }, 400);
+        console.log('Correct');
+        correct();
+        game();
+    } else {
+        userInput.addClass('shake')
+        setTimeout(function() {
+        userInput.removeClass('shake')
+        }, 400);
+        console.log("%cWrong" ,"font-size:20px;color:red;");
+        wrong();
     };
 };
 
-userInput.on('keydown', enter);
+userInput.on('keydown', function (event) {
+    if (event.keyCode === 13) {
+        enter(event);
+    } else if (event.keyCode === 32) {
+        game();
+    }
+});
 
 const correct = () => {
     if (difficultyMode === "easy") {
