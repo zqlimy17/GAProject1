@@ -1,20 +1,16 @@
-/////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
-
 let time = 30;
 let difficultyMode = 'easy';
 let activeGameMode = "Timed";
 let timeLeft = time;
 let operation = "";
 let currentHighScore = "";
-
-// OTHER VARIABLES
 let ans = 0;
 let isPaused = false;
+let scoreCounter = 0;
 
-/////////////////////////////////////////////////////////////////////
+
 // SELECTORS
-
 const startMenu = $('#start-menu');
 const countdown = $('#countdown');
 const inGame = $('#in-game');
@@ -31,8 +27,7 @@ const startCountdown = $('#start-countdown');
 const gameSpace = $('#mathable');
 const mainMenuHighScore = $('#main-menu-high-score')
 const highScore = $('.high-score');
-let currentScore = $('#current-score');
-let scoreCounter = 0;
+const currentScore = $('#current-score');
 
 // BUTTON SELECTORS
 const restartGameButton = $('#restart-game');
@@ -49,12 +44,9 @@ const pausedMainMenu = $('#paused-main-menu');
 const gameMode = $('.game-mode');
 const difficultyOptions = $('.difficulty-options');
 
-/////////////////////////////////////////////////////////////////////
 // FUNCTIONS
-
 let game = () => {
     userInput.focus();
-    // IF STATEMENT FOR GAME DIFFICULTY
     if (operation === "addition") {
         addition();
     } else if (operation === "subtraction") {
@@ -74,14 +66,12 @@ let addition = () => {
         var b = Math.ceil(Math.random() * 47) + 3;
         ans = a + b;
         gameSpace.text(a + '+' + b);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
         var a = Math.ceil(Math.random() * 45) + 5;
         var b = Math.ceil(Math.random() * 47) + 3;
         var c = Math.ceil(Math.random() * 45) + 5;
         ans = a + b + c;
         gameSpace.text(`${a} + ${b} + ${c}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else {
         var a = Math.ceil(Math.random() * 45) + 5;
         var b = Math.ceil(Math.random() * 47) + 3;
@@ -89,7 +79,6 @@ let addition = () => {
         var d = Math.ceil(Math.random() * 47) + 3;
         ans = a + b + c + d;
         gameSpace.text(`${a} + ${b} + ${c} + ${d}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     }
 };
 
@@ -99,14 +88,12 @@ let subtraction = () => {
         var b = Math.ceil(Math.random() * 47) + 3;
         ans = a - b;
         gameSpace.text(a + '-' + b);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
         var a = Math.ceil(Math.random() * 25) + 25;
         var b = Math.ceil(Math.random() * 47) + 3;
         var c = Math.ceil(Math.random() * 45) + 5;
         ans = a - b - c;
         gameSpace.text(`${a} - ${b} - ${c}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else {
         var a = Math.ceil(Math.random() * 80) + 20;
         var b = Math.ceil(Math.random() * 47) + 3;
@@ -114,7 +101,6 @@ let subtraction = () => {
         var d = Math.ceil(Math.random() * 47) + 3;
         ans = a - b - c - d;
         gameSpace.text(`${a} - ${b} - ${c} - ${d}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     }
 };
 
@@ -124,7 +110,6 @@ let multiplication = () => {
         var b = Math.ceil(Math.random() * 9) + 3;
         ans = a * b;
         gameSpace.text(a + 'x' + b);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
         let randoming = Math.random();
         var a = Math.ceil(Math.random() * 8)+4;
@@ -132,11 +117,9 @@ let multiplication = () => {
         if (randoming < 0.5) {
             ans = a * a * b;
             gameSpace.text(`${a}² x ${b}`);
-            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
         } else {
             ans = a * b * b;
             gameSpace.text(`${a} x ${b}²`);
-            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
         }
     } else {
         let randoming = Math.random();
@@ -147,20 +130,17 @@ let multiplication = () => {
             var c = Math.ceil(Math.random() * 4)+2;
             ans = a * a * Math.sqrt(b) * c;
             gameSpace.text(`${a}² x √${b} x ${c}`);
-            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
         } else if (randoming < 0.67) {
             var c = y * y;
             var b = Math.ceil(Math.random() * 4)+2;
             ans = a * b * b * Math.sqrt(c);
             gameSpace.text(`${a} x ${b}² x √${c}`);
-            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
         } else {
             var d = (Math.ceil(Math.random() * 4)+2);
             var b = (Math.ceil(Math.random() * 4)+2);
             var c = (Math.ceil(Math.random() * 4)+2);
             ans = a * b * c * d;
             gameSpace.text(`${a} x ${b} x ${c} x ${d}`);
-            console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
         }
     }
 };
@@ -171,14 +151,12 @@ let division = () => {
         var a = b * (Math.ceil(Math.random() * 9) +3);
         ans = a / b;
         gameSpace.text(a + '÷' + b);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else if (difficultyMode === 'medium') {
         var b = Math.ceil(Math.random() * 2) + 3;
         var y = b * (Math.ceil(Math.random() * 7));
         var a = y * y;
         ans = y / b
         gameSpace.text(`√${a} ÷ ${b}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     } else {
         var z = Math.ceil(Math.random() * 2) + 2;
         var b = z * z;
@@ -186,7 +164,6 @@ let division = () => {
         var a = y * y;
         ans = y/z;
         gameSpace.text(`√${a} ÷ √${b}`);
-        console.log(`%cAnswer is ${ans}`,"color:green; font-size: 20px;");
     }
 };
 
@@ -211,7 +188,6 @@ let enter = (event) => {
         setTimeout(function() {
             userInput.removeClass('flash')
         }, 400);
-        console.log('Correct');
         correct();
         game();
     } else {
@@ -219,7 +195,6 @@ let enter = (event) => {
         setTimeout(function() {
             userInput.removeClass('shake')
         }, 400);
-        console.log("%cWrong" ,"font-size:20px;color:red;");
         wrong();
     };
 };
@@ -313,7 +288,6 @@ const gameStart = () => {
     inGame.show();
     game();
     startTimer();
-    console.log('Game Started');
 };
 
 let startTimer = () => {
@@ -344,7 +318,6 @@ let startTimer = () => {
 };
 
 const startGameButtonClicked = () => {
-    console.log('clicked on start/restart game button');
     scoreCounter = 0;
     currentScore.text(scoreCounter);
     let counter = 3;
@@ -366,7 +339,6 @@ const startGameButtonClicked = () => {
 };
 
 const gameEnd = () => {
-    console.log('game has ended');
     inGame.hide();
     endGame.show();
     endGameScore.append(scoreCounter);
@@ -387,7 +359,6 @@ const gameEnd = () => {
     }
 };
 
-/////////////////////////////////////////////////////////////////////
 // BUTTONS
 
 startGame.attr('disabled', true);
@@ -409,7 +380,6 @@ operationButton.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     operation = x;
     startGame.attr('disabled', false);
-    console.log(`${x} is selected`);
 });
 
 gameMode.on('click', (event) => {
@@ -417,23 +387,19 @@ gameMode.on('click', (event) => {
     $(event.currentTarget).addClass('active');
     masterTime.text($(event.currentTarget).attr('value'));
     activeGameMode = $(event.currentTarget).text();
-    console.log($(event.currentTarget).text());
 });
 
 difficultyOptions.on('click', (event) => {
     difficultyOptions.removeClass('active');
     $(event.currentTarget).addClass('active');
     difficultyMode = $(event.currentTarget).attr('value');
-    console.log($(event.currentTarget).attr('value'));
 });
 
 inGameEndGame.on('click', () => {
     gameEnd();
-    console.log("clicked end game button")
 });
 
 mainMenuButton.on('click',() => {
-    console.log('clicked main menu button');
     pausedScreen.hide();
     countdown.hide();
     inGame.hide();
@@ -444,7 +410,6 @@ mainMenuButton.on('click',() => {
 
 pauseButton.on('click', () => {
     timeBar.css('animation-play-state', 'paused');
-    console.log('paused game');
     isPaused = true;
     pausedScreen.show();
     inGame.hide();
@@ -452,7 +417,6 @@ pauseButton.on('click', () => {
 
 resumeButton.on('click', () => {
     timeBar.css('animation-play-state', '');
-    console.log('resumed game');
     isPaused = false;
     pausedScreen.hide();
     inGame.show();
