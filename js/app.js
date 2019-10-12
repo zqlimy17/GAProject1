@@ -394,19 +394,20 @@ const gameEnd = () => {
     endGame.show();
     endGameScore.append(scoreCounter);
     mainMenuHighScore.show();
-    if (currentHighScore < scoreCounter) {
-        currentHighScore = scoreCounter;
-        highScore.text(currentHighScore);
-    };
-    if (currentHighScore >= 25) {
-        $('#medium-tooltip').tooltip('dispose');
-        $('#medium-button').css('pointer-events', '');
-        difficultyOptions.eq(1).attr('disabled', false);
-    };
-    if (currentHighScore >= 250) {
-        $('#hard-tooltip').tooltip('dispose')
-        $('#hard-button').css('pointer-events', '');
-        difficultyOptions.eq(2).attr('disabled', false);
+    switch (true) {
+        case (currentHighScore >= 25):
+            $('#medium-tooltip').tooltip('dispose');
+            $('#medium-button').css('pointer-events', '');
+            difficultyOptions.eq(1).attr('disabled', false);
+            break;
+        case (currentHighScore >= 250):
+            $('#hard-tooltip').tooltip('dispose')
+            $('#hard-button').css('pointer-events', '');
+            difficultyOptions.eq(2).attr('disabled', false);
+            break;
+        default:
+            currentHighScore = scoreCounter;
+            highScore.text(currentHighScore);
     }
 };
 
