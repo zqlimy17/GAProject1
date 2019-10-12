@@ -1,48 +1,47 @@
 // MASTER OPTIONS
-let time = 30;
-let difficultyMode = 'easy';
-let activeGameMode = "Timed";
-let timeLeft = time;
-let operation = "";
-let currentHighScore = "";
-let ans = 0;
-let isPaused = false;
-let scoreCounter = 0;
-
+let time = 30,
+difficultyMode = 'easy',
+activeGameMode = "Timed",
+timeLeft = time,
+operation = "",
+currentHighScore = "",
+ans = 0,
+isPaused = false,
+scoreCounter = 0;
 
 // SELECTORS
-const startMenu = $('#start-menu');
-const countdown = $('#countdown');
-const inGame = $('#in-game');
-const endGame = $('#end-game');
-const scoreBoard = $('#score-board');
-const startGame = $('#start-game');
-const userInput = $('#user-input');
-const timeBar = $('#time-bar');
-const endGameScore = $('#end-game-score');
-const pausedScreen = $('#paused-screen');
-const masterTime = $('#master-time')
-const operationButton = $('.operation-button');
-const startCountdown = $('#start-countdown');
-const gameSpace = $('#mathable');
-const mainMenuHighScore = $('#main-menu-high-score')
-const highScore = $('.high-score');
-const currentScore = $('#current-score');
+const startMenu = $('#start-menu'),
+countdown = $('#countdown'),
+inGame = $('#in-game'),
+endGame = $('#end-game'),
+scoreBoard = $('#score-board'),
+startGame = $('#start-game'),
+userInput = $('#user-input'),
+timeBar = $('#time-bar'),
+endGameScore = $('#end-game-score'),
+pausedScreen = $('#paused-screen'),
+masterTime = $('#master-time'),
+operationButton = $('.operation-button'),
+startCountdown = $('#start-countdown'),
+gameSpace = $('#mathable'),
+mainMenuHighScore = $('#main-menu-high-score'),
+highScore = $('.high-score'),
+currentScore = $('#current-score'),
 
 // BUTTON SELECTORS
-const restartGameButton = $('#restart-game');
-const mainMenuButton = $('.back-to-main-menu');
-const additionButton = $('#addition');
-const subtractionButton = $('#subtraction');
-const multiplicationButton = $('#multiplication');
-const divisionButton = $('#division');
-const randomButton = $('#random');
-const pauseButton = $('#pause-button');
-const inGameEndGame = $('#in-game-end-game');
-const resumeButton = $('#resume-button');
-const pausedMainMenu = $('#paused-main-menu');
-const gameMode = $('.game-mode');
-const difficultyOptions = $('.difficulty-options');
+restartGameButton = $('#restart-game'),
+mainMenuButton = $('.back-to-main-menu'),
+additionButton = $('#addition'),
+subtractionButton = $('#subtraction'),
+multiplicationButton = $('#multiplication'),
+divisionButton = $('#division'),
+randomButton = $('#random'),
+pauseButton = $('#pause-button'),
+inGameEndGame = $('#in-game-end-game'),
+resumeButton = $('#resume-button'),
+pausedMainMenu = $('#paused-main-menu'),
+gameMode = $('.game-mode'),
+difficultyOptions = $('.difficulty-options');
 
 // FUNCTIONS
 let game = () => {
@@ -482,4 +481,3 @@ countdown.hide();
 inGame.hide();
 endGame.hide();
 pausedScreen.hide();
-masterTime.text(time + ' seconds');
