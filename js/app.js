@@ -47,17 +47,36 @@ const difficultyOptions = $('.difficulty-options');
 // FUNCTIONS
 let game = () => {
     userInput.focus();
-    if (operation === "addition") {
-        addition();
-    } else if (operation === "subtraction") {
-        subtraction();
-    } else if (operation === "multiplication") {
-        multiplication();
-    } else if (operation === "division") {
-        division();
-    } else {
-        random();
+    switch (operation) {
+        case "addition":
+            addition();
+            break;
+        case "subtraction":
+            subtraction();
+            break;
+        case "multiplication":
+            multiplication();
+            break;
+        case "division":
+            division();
+            break;
+        default:
+            random();
     }
+
+
+
+    // if (operation === "addition") {
+    //     addition();
+    // } else if (operation === "subtraction") {
+    //     subtraction();
+    // } else if (operation === "multiplication") {
+    //     multiplication();
+    // } else if (operation === "division") {
+    //     division();
+    // } else {
+    //     random();
+    // }
 };
 
 let addition = () => {
