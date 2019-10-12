@@ -48,68 +48,68 @@ let game = () => {
     userInput.focus();
     switch (operation) {
         case "addition":
-            addition();
-            break;
+        addition();
+        break;
         case "subtraction":
-            subtraction();
-            break;
+        subtraction();
+        break;
         case "multiplication":
-            multiplication();
-            break;
+        multiplication();
+        break;
         case "division":
-            division();
-            break;
+        division();
+        break;
         default:
-            random();
+        random();
     }
 };
 
 let addition = () => {
     switch (difficultyMode) {
         case "easy":
-            var a = Math.ceil(Math.random() * 45) + 5;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            ans = a + b;
-            gameSpace.text(a + '+' + b);
-            break;
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        ans = a + b;
+        gameSpace.text(a + '+' + b);
+        break;
         case "medium":
-            var a = Math.ceil(Math.random() * 45) + 5;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            ans = a + b;
-            gameSpace.text(a + '+' + b);
-            break;
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        ans = a + b;
+        gameSpace.text(a + '+' + b);
+        break;
         default:
-            var a = Math.ceil(Math.random() * 45) + 5;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            var c = Math.ceil(Math.random() * 45) + 5;
-            var d = Math.ceil(Math.random() * 47) + 3;
-            ans = a + b + c + d;
-            gameSpace.text(`${a} + ${b} + ${c} + ${d}`);
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        var d = Math.ceil(Math.random() * 47) + 3;
+        ans = a + b + c + d;
+        gameSpace.text(`${a} + ${b} + ${c} + ${d}`);
     }
 };
 
 let subtraction = () => {
     switch (difficultyMode) {
         case "easy":
-            var a = Math.ceil(Math.random() * 45) + 5;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            ans = a - b;
-            gameSpace.text(a + '-' + b);
-            break;
+        var a = Math.ceil(Math.random() * 45) + 5;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        ans = a - b;
+        gameSpace.text(a + '-' + b);
+        break;
         case "medium":
-            var a = Math.ceil(Math.random() * 25) + 25;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            var c = Math.ceil(Math.random() * 45) + 5;
-            ans = a - b - c;
-            gameSpace.text(`${a} - ${b} - ${c}`);
-            break;
+        var a = Math.ceil(Math.random() * 25) + 25;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        ans = a - b - c;
+        gameSpace.text(`${a} - ${b} - ${c}`);
+        break;
         default:
-            var a = Math.ceil(Math.random() * 80) + 20;
-            var b = Math.ceil(Math.random() * 47) + 3;
-            var c = Math.ceil(Math.random() * 45) + 5;
-            var d = Math.ceil(Math.random() * 47) + 3;
-            ans = a - b - c - d;
-            gameSpace.text(`${a} - ${b} - ${c} - ${d}`);
+        var a = Math.ceil(Math.random() * 80) + 20;
+        var b = Math.ceil(Math.random() * 47) + 3;
+        var c = Math.ceil(Math.random() * 45) + 5;
+        var d = Math.ceil(Math.random() * 47) + 3;
+        ans = a - b - c - d;
+        gameSpace.text(`${a} - ${b} - ${c} - ${d}`);
     }
 }
 
@@ -118,72 +118,72 @@ let multiplication = () => {
     let randoming = Math.random();
     switch (difficultyMode) {
         case "easy":
-            var a = Math.ceil(Math.random() * 9) + 3;
-            var b = Math.ceil(Math.random() * 9) + 3;
-            ans = a * b;
-            gameSpace.text(a + 'x' + b);
-            break;
+        var a = Math.ceil(Math.random() * 9) + 3;
+        var b = Math.ceil(Math.random() * 9) + 3;
+        ans = a * b;
+        gameSpace.text(a + 'x' + b);
+        break;
         case "medium":
-            randoming = Math.random();
-            var a = Math.ceil(Math.random() * 8)+4;
-            var b = Math.ceil(Math.random() * 4)+1;
-            if (randoming < 0.5) {
-                ans = a * a * b;
-                gameSpace.text(`${a}² x ${b}`);
-            } else {
-                ans = a * b * b;
-                gameSpace.text(`${a} x ${b}²`);
-            }
-            break;
+        randoming = Math.random();
+        var a = Math.ceil(Math.random() * 8)+4;
+        var b = Math.ceil(Math.random() * 4)+1;
+        if (randoming < 0.5) {
+            ans = a * a * b;
+            gameSpace.text(`${a}² x ${b}`);
+        } else {
+            ans = a * b * b;
+            gameSpace.text(`${a} x ${b}²`);
+        }
+        break;
         default:
-            randoming = Math.random();
-            var a = Math.ceil(Math.random() * 4)+2;
-            var y = (Math.ceil(Math.random() * 4)+2);
-            switch (true) {
-                case (randoming < 0.33):
-                    var b = y * y;
-                    var c = Math.ceil(Math.random() * 4)+2;
-                    ans = a * a * Math.sqrt(b) * c;
-                    gameSpace.text(`${a}² x √${b} x ${c}`);
-                    break;
-                case (randoming < 0.67):
-                    var c = y * y;
-                    var b = Math.ceil(Math.random() * 4)+2;
-                    ans = a * b * b * Math.sqrt(c);
-                    gameSpace.text(`${a} x ${b}² x √${c}`);
-                    break;
-                default:
-                    var d = (Math.ceil(Math.random() * 4)+2);
-                    var b = (Math.ceil(Math.random() * 4)+2);
-                    var c = (Math.ceil(Math.random() * 4)+2);
-                    ans = a * b * c * d;
-                    gameSpace.text(`${a} x ${b} x ${c} x ${d}`);
-            }
+        randoming = Math.random();
+        var a = Math.ceil(Math.random() * 4)+2;
+        var y = (Math.ceil(Math.random() * 4)+2);
+        switch (true) {
+            case (randoming < 0.33):
+            var b = y * y;
+            var c = Math.ceil(Math.random() * 4)+2;
+            ans = a * a * Math.sqrt(b) * c;
+            gameSpace.text(`${a}² x √${b} x ${c}`);
+            break;
+            case (randoming < 0.67):
+            var c = y * y;
+            var b = Math.ceil(Math.random() * 4)+2;
+            ans = a * b * b * Math.sqrt(c);
+            gameSpace.text(`${a} x ${b}² x √${c}`);
+            break;
+            default:
+            var d = (Math.ceil(Math.random() * 4)+2);
+            var b = (Math.ceil(Math.random() * 4)+2);
+            var c = (Math.ceil(Math.random() * 4)+2);
+            ans = a * b * c * d;
+            gameSpace.text(`${a} x ${b} x ${c} x ${d}`);
+        }
     }
 };
 
 let division = () => {
     switch (difficultyMode) {
         case "easy":
-            var b = Math.ceil(Math.random() * 9) + 3;
-            var a = b * (Math.ceil(Math.random() * 9) +3);
-            ans = a / b;
-            gameSpace.text(a + '÷' + b);
-            break;
+        var b = Math.ceil(Math.random() * 9) + 3;
+        var a = b * (Math.ceil(Math.random() * 9) +3);
+        ans = a / b;
+        gameSpace.text(a + '÷' + b);
+        break;
         case "medium":
-            var b = Math.ceil(Math.random() * 2) + 3;
-            var y = b * (Math.ceil(Math.random() * 7));
-            var a = y * y;
-            ans = y / b
-            gameSpace.text(`√${a} ÷ ${b}`);
-            break;
+        var b = Math.ceil(Math.random() * 2) + 3;
+        var y = b * (Math.ceil(Math.random() * 7));
+        var a = y * y;
+        ans = y / b
+        gameSpace.text(`√${a} ÷ ${b}`);
+        break;
         default:
-            var z = Math.ceil(Math.random() * 2) + 2;
-            var b = z * z;
-            var y = b * (Math.ceil(Math.random() * 3));
-            var a = y * y;
-            ans = y/z;
-            gameSpace.text(`√${a} ÷ √${b}`);
+        var z = Math.ceil(Math.random() * 2) + 2;
+        var b = z * z;
+        var y = b * (Math.ceil(Math.random() * 3));
+        var a = y * y;
+        ans = y/z;
+        gameSpace.text(`√${a} ÷ √${b}`);
     }
 };
 
@@ -192,16 +192,16 @@ let random = () => {
     r = Math.floor(Math.random() * 4);
     switch (true) {
         case (r === 0):
-            addition();
-            break;
+        addition();
+        break;
         case (r === 1):
-            subtraction();
-            break;
+        subtraction();
+        break;
         case (r === 2):
-            multiplication();
-            break;
+        multiplication();
+        break;
         default:
-            division();
+        division();
     }
 };
 
@@ -234,94 +234,94 @@ userInput.on('keydown', function (event) {
 const correct = () => {
     switch (difficultyMode) {
         case "easy":
-            switch (operation) {
-                case "addition":
-                    scoreCounter = scoreCounter + 2;
-                    break;
-                case "subtraction":
-                    scoreCounter = scoreCounter + 3;
-                    break;
-                case "multiplication":
-                    scoreCounter = scoreCounter + 4;
-                    break;
-                case "division":
-                    scoreCounter = scoreCounter + 5;
-                    break;
-                default:
-                    switch (true) {
-                        case (gameSpace.text().includes('+')):
-                            scoreCounter = scoreCounter + 4;
-                            break;
-                        case (gameSpace.text().includes('-')):
-                            scoreCounter = scoreCounter + 6;
-                            break;
-                        case (gameSpace.text().includes('x')):
-                            scoreCounter = scoreCounter + 8;
-                            break;
-                        default:
-                            scoreCounter = scoreCounter + 10;
-                    }
-                }
-                break;
-        case "medium":
-            switch (operation) {
-                case "addition":
-                    scoreCounter = scoreCounter + 20;
-                    break;
-                case "subtraction":
-                    scoreCounter = scoreCounter + 30;
-                    break;
-                case "multiplication":
-                    scoreCounter = scoreCounter + 40;
-                    break;
-                case "division":
-                    scoreCounter = scoreCounter + 50;
-                    break;
-                default:
-                    switch (true) {
-                        case (gameSpace.text().includes('+')):
-                            scoreCounter = scoreCounter + 40;
-                            break;
-                        case (gameSpace.text().includes('-')):
-                            scoreCounter = scoreCounter + 60;
-                            break;
-                        case (gameSpace.text().includes('x')):
-                            scoreCounter = scoreCounter + 80;
-                            break;
-                        default:
-                            scoreCounter = scoreCounter + 100;
-                    }
-            }
+        switch (operation) {
+            case "addition":
+            scoreCounter = scoreCounter + 2;
             break;
-        default:
-            switch (operation) {
-                case "addition":
-                    scoreCounter = scoreCounter + 200;
-                    break;
-                case "subtraction":
-                    scoreCounter = scoreCounter + 300;
-                    break;
-                case "multiplication":
-                    scoreCounter = scoreCounter + 400;
-                    break;
-                case "division":
-                    scoreCounter = scoreCounter + 500;
-                    break;
+            case "subtraction":
+            scoreCounter = scoreCounter + 3;
+            break;
+            case "multiplication":
+            scoreCounter = scoreCounter + 4;
+            break;
+            case "division":
+            scoreCounter = scoreCounter + 5;
+            break;
+            default:
+            switch (true) {
+                case (gameSpace.text().includes('+')):
+                scoreCounter = scoreCounter + 4;
+                break;
+                case (gameSpace.text().includes('-')):
+                scoreCounter = scoreCounter + 6;
+                break;
+                case (gameSpace.text().includes('x')):
+                scoreCounter = scoreCounter + 8;
+                break;
                 default:
-                    switch (true) {
-                        case (gameSpace.text().includes('+')):
-                            scoreCounter = scoreCounter + 400;
-                            break;
-                        case (gameSpace.text().includes('-')):
-                            scoreCounter = scoreCounter + 600;
-                            break;
-                        case (gameSpace.text().includes('x')):
-                            scoreCounter = scoreCounter + 800;
-                            break;
-                        default:
-                            scoreCounter = scoreCounter + 1000;
-                    }
+                scoreCounter = scoreCounter + 10;
             }
+        }
+        break;
+        case "medium":
+        switch (operation) {
+            case "addition":
+            scoreCounter = scoreCounter + 20;
+            break;
+            case "subtraction":
+            scoreCounter = scoreCounter + 30;
+            break;
+            case "multiplication":
+            scoreCounter = scoreCounter + 40;
+            break;
+            case "division":
+            scoreCounter = scoreCounter + 50;
+            break;
+            default:
+            switch (true) {
+                case (gameSpace.text().includes('+')):
+                scoreCounter = scoreCounter + 40;
+                break;
+                case (gameSpace.text().includes('-')):
+                scoreCounter = scoreCounter + 60;
+                break;
+                case (gameSpace.text().includes('x')):
+                scoreCounter = scoreCounter + 80;
+                break;
+                default:
+                scoreCounter = scoreCounter + 100;
+            }
+        }
+        break;
+        default:
+        switch (operation) {
+            case "addition":
+            scoreCounter = scoreCounter + 200;
+            break;
+            case "subtraction":
+            scoreCounter = scoreCounter + 300;
+            break;
+            case "multiplication":
+            scoreCounter = scoreCounter + 400;
+            break;
+            case "division":
+            scoreCounter = scoreCounter + 500;
+            break;
+            default:
+            switch (true) {
+                case (gameSpace.text().includes('+')):
+                scoreCounter = scoreCounter + 400;
+                break;
+                case (gameSpace.text().includes('-')):
+                scoreCounter = scoreCounter + 600;
+                break;
+                case (gameSpace.text().includes('x')):
+                scoreCounter = scoreCounter + 800;
+                break;
+                default:
+                scoreCounter = scoreCounter + 1000;
+            }
+        }
     }
     currentScore.text(scoreCounter);
     userInput.val("");
