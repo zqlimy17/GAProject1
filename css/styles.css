@@ -35,6 +35,10 @@ footer {
     margin-bottom: -5px;
 }
 
+.border-btn {
+    border: 2px solid sienna;
+}
+
 /* START-MENU */
 
 #start-menu {
@@ -107,7 +111,7 @@ footer {
 #score-board {
     position: absolute;
     width: 100%;
-    top: -120px;
+    top: -180px;
 }
 
 .board {

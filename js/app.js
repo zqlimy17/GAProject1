@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 3000;
+let time = 30;
 let difficultyMode = 'easy';
 let activeGameMode = "Timed";
 let timeLeft = time;
