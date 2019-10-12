@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////
 // MASTER OPTIONS
 
-let time = 30;
+let time = 3000;
 let difficultyMode = 'easy';
 let activeGameMode = "Timed";
 let timeLeft = time;
@@ -458,7 +458,7 @@ resumeButton.on('click', () => {
 });
 
 // TOOLTIPS
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip();
 
 // SHOW/HIDE SECTIONS
 mainMenuHighScore.hide();
