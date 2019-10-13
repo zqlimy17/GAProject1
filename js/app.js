@@ -43,6 +43,17 @@ pausedMainMenu = $('#paused-main-menu'),
 gameMode = $('.game-mode'),
 difficultyOptions = $('.difficulty-options');
 
+// AUDIO
+let mainMenuSound = new Audio('audio/mainmenu.wav'),
+inGameSound = new Audio('audio/in-game.mp3'),
+gameButtonSound = new Audio('audio/buttonclick.mp3'),
+countdownSound = new Audio('audio/countdown-timer.mp3'),
+goSound = new Audio('audio/start-voice.mp3'),
+correctSound = new Audio('audio/correct-voice.mp3'),
+incorrectSound = new Audio('audio/incorrect-voice.mp3'),
+gameEndSound = new Audio('audio/gameend.mp3');
+
+
 // FUNCTIONS
 let game = () => {
     userInput.focus();
@@ -476,6 +487,17 @@ resumeButton.on('click', () => {
 $('[data-toggle="tooltip"]').tooltip();
 
 // SHOW/HIDE SECTIONS
+var promise = mainMenuSound.play();
+
+if (promise !== undefined) {
+    promise.then(_ => {
+        console.log('Autoplay started!')
+    }).catch(error => {
+        console.log('Autoplay was prevented.')
+        // Show a "Play" button so that user can start playback.
+    });
+}
+
 mainMenuHighScore.hide();
 countdown.hide();
 inGame.hide();
