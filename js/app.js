@@ -243,6 +243,7 @@ userInput.on('keydown', function (event) {
 });
 
 const correct = () => {
+    correctSound.play();
     switch (difficultyMode) {
         case "easy":
         switch (operation) {
@@ -339,12 +340,16 @@ const correct = () => {
 };
 
 const wrong = () => {
+    incorrectSound.play();
     scoreCounter--;
     currentScore.text(scoreCounter);
     userInput.val("");
 };
 
 const gameStart = () => {
+    inGameSound.play();
+    inGameSound.volume = 0.5;
+    inGameSound.loop = true;
     countdown.hide();
     inGame.show();
     game();
@@ -352,6 +357,7 @@ const gameStart = () => {
 };
 
 let startTimer = () => {
+    mainMenuSound.pause();
     if (activeGameMode === "Timed") {
         timeBar.show();
         timeBar.addClass('colorchange');
@@ -379,20 +385,24 @@ let startTimer = () => {
 };
 
 const startGameButtonClicked = () => {
+    timeBar.css('animation-play-state', '');
     scoreCounter = 0;
     currentScore.text(scoreCounter);
     let counter = 3;
     startMenu.hide();
     countdown.show();
     startCountdown.text(counter);
-
     let count = setInterval(function(){
         counter--;
         startCountdown.text(counter);
         if(counter === 0) {
+            goSound.play();
             startCountdown.text('Go!');
             clearInterval(count);
+        } else {
+            countdownSound.play();
         }
+        mainMenuSound.volume -= 0.3;
     },1000);
     setTimeout(function(){
         gameStart();
@@ -400,6 +410,9 @@ const startGameButtonClicked = () => {
 };
 
 const gameEnd = () => {
+    inGameSound.pause();
+    inGameSound.currentTime = 0;
+    gameEndSound.play();
     inGame.hide();
     endGame.show();
     endGameScore.append(scoreCounter);
@@ -426,9 +439,12 @@ startGame.attr('disabled', true);
 
 startGame.on('click', () => {
     startGameButtonClicked();
+    countdownSound.play();
+
 });
 
 restartGameButton.on('click', () => {
+    countdownSound.play();
     startGameButtonClicked();
     endGame.hide();
     endGameScore.text("");
@@ -461,6 +477,9 @@ inGameEndGame.on('click', () => {
 });
 
 mainMenuButton.on('click',() => {
+    mainMenuSound.volume = 1;
+    mainMenuSound.play();
+    mainMenuSound.loop = true;
     pausedScreen.hide();
     countdown.hide();
     inGame.hide();
@@ -470,6 +489,7 @@ mainMenuButton.on('click',() => {
 });
 
 pauseButton.on('click', () => {
+    inGameSound.pause();
     timeBar.css('animation-play-state', 'paused');
     isPaused = true;
     pausedScreen.show();
@@ -477,17 +497,16 @@ pauseButton.on('click', () => {
 });
 
 resumeButton.on('click', () => {
+    inGameSound.play();
     timeBar.css('animation-play-state', '');
     isPaused = false;
     pausedScreen.hide();
     inGame.show();
 });
 
-// TOOLTIPS
-$('[data-toggle="tooltip"]').tooltip();
+// AUDIO
 
-// SHOW/HIDE SECTIONS
-var promise = mainMenuSound.play();
+let promise = mainMenuSound.play();
 
 if (promise !== undefined) {
     promise.then(_ => {
@@ -497,6 +516,16 @@ if (promise !== undefined) {
         // Show a "Play" button so that user can start playback.
     });
 }
+
+$('.btn').on('click', () => {
+    gameButtonSound.play();
+})
+
+
+// TOOLTIPS
+$('[data-toggle="tooltip"]').tooltip();
+
+// SHOW/HIDE SECTIONS
 
 mainMenuHighScore.hide();
 countdown.hide();
