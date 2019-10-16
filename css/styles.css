@@ -12,6 +12,7 @@ h1 {
     font-family: 'Special Elite', cursive;
     font-weight: 700;
     font-size: 5em;
+    pointer-events: none;
     line-height: 1.2em;
 }
 

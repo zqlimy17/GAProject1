@@ -84,6 +84,10 @@ let game = () => {
     }
 };
 
+// function doOperation(operation, difficulty) {
+
+// }
+
 let addition = () => {
     switch (difficultyMode) {
         case "easy":
