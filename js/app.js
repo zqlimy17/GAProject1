@@ -263,13 +263,13 @@ const correct = () => {
             break;
             default:
             switch (true) {
-                case (gameSpace.text().includes('+')):
+                case (operation === "addition"):
                 scoreCounter = scoreCounter + 4;
                 break;
-                case (gameSpace.text().includes('-')):
+                case (operation === "subtraction"):
                 scoreCounter = scoreCounter + 6;
                 break;
-                case (gameSpace.text().includes('x')):
+                case (operation === "multiplication"):
                 scoreCounter = scoreCounter + 8;
                 break;
                 default:
@@ -539,7 +539,6 @@ if (highScoreStorage[0] > 0) {
     mainMenuHighScore.show();
 }
 checkHighScoreUnlockDifficulty();
-
 
 // TOOLTIPS
 $('[data-toggle="tooltip"]').tooltip();
