@@ -19,6 +19,7 @@ scoreBoard = $('#score-board'),
 startGame = $('#start-game'),
 userInput = $('#user-input'),
 timeBar = $('#time-bar'),
+tipsSpace = $('#tips'),
 endGameScore = $('#end-game-score'),
 pausedScreen = $('#paused-screen'),
 masterTime = $('#master-time'),
@@ -54,6 +55,13 @@ correctSound = new Audio('audio/correct-voice.mp3'),
 incorrectSound = new Audio('audio/incorrect-voice.mp3'),
 gameEndSound = new Audio('audio/gameend.mp3');
 
+// TIPS
+const tips = [
+"Tip: Hit SPACE to skip!",
+"Tip: Stuck? Try the Casual game mode!",
+"Tip: Too hard? HIT SPACE TO SKIP!",
+"Tip: Spacebar to skip."
+]
 
 // FUNCTIONS
 let game = () => {
@@ -293,13 +301,13 @@ const correct = () => {
             break;
             default:
             switch (true) {
-                case (gameSpace.text().includes('+')):
+                case (operation === "addition"):
                 scoreCounter = scoreCounter + 40;
                 break;
-                case (gameSpace.text().includes('-')):
+                case (operation === "subtraction"):
                 scoreCounter = scoreCounter + 60;
                 break;
-                case (gameSpace.text().includes('x')):
+                case (operation === "multiplication"):
                 scoreCounter = scoreCounter + 80;
                 break;
                 default:
@@ -323,13 +331,13 @@ const correct = () => {
             break;
             default:
             switch (true) {
-                case (gameSpace.text().includes('+')):
+                case (operation === "addition"):
                 scoreCounter = scoreCounter + 400;
                 break;
-                case (gameSpace.text().includes('-')):
+                case (operation === "subtraction"):
                 scoreCounter = scoreCounter + 600;
                 break;
-                case (gameSpace.text().includes('x')):
+                case (operation === "multiplication"):
                 scoreCounter = scoreCounter + 800;
                 break;
                 default:
@@ -400,6 +408,7 @@ let startTimer = () => {
 };
 
 const startGameButtonClicked = () => {
+    tipsSpace.text(tips[Math.floor(Math.random()* tips.length)]);
     timeBar.css('animation-play-state', '');
     scoreCounter = 0;
     currentScore.text(scoreCounter);
