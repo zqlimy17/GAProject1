@@ -43,7 +43,7 @@ Players can play in the "Casual" game mode to try and unlock these harder diffic
 # Technologies and Resources
 - HTML, CSS (bootstrap), JavaScript (jQuery, popper.js).
 
-# Approach
+## Approach 
 1. Once the game loads, the users will have to select an operation before the game can start.
 2. [Optional] The player can choose to play in casual mode.
 3. A countdown timer with a random tip will be shown.
